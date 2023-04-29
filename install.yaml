@@ -1,0 +1,81 @@
+name: addon-template
+
+# pre_install_actions - list of actions to run before installing the addon.
+# Examples would be removing an extraneous docker volume,
+# or doing a sanity check for requirements.
+# DDEV environment variables can be interpolated into these actions
+pre_install_actions:
+  # Actions with #ddev-nodisplay will not show the execution of the action, but may show their output
+# - |
+  # #ddev-nodisplay
+  #ddev-description:Check architecture type for incompatible arm64 type
+  # if [ "$(arch)" = "arm64" -o "$(arch)" = "aarch64" ]; then
+    # echo "This package does not work on arm64 machines";
+    # exit 1;
+  #fi
+
+# - "docker volume rm ddev-${DDEV_PROJECT}_solr 2>/dev/null || true"
+#- |
+#  # Using #ddev-nodisplay tells ddev to be quiet about this action and not show it or its output.
+#  #ddev-nodisplay
+#  #ddev-description:Remove solr volume
+#  if ! ( ddev debug capabilities 2>/dev/null | grep multiple-dockerfiles >/dev/null 2>&1 ) ; then
+#    echo "This add-on requires DDEV v1.19.4 or higher, please upgrade." && exit 2
+#  fi
+#- 'echo "what is your platform.sh token" && read x'
+
+# This item shows templating using DDEV environment variables.
+# -
+#   #ddev-description:Touch a file to create it
+#   touch somefile.${DDEV_PROJECT_TYPE}.${DDEV_DOCROOT}.txt
+#
+
+# This item shows complex go templating possibilities based on yaml_read_files
+#- |
+#- #ddev-description:Create a config.platformsh.yaml
+#  cat <<EOF >.ddev/config.platformsh.yaml
+#  php_version: {{ trimPrefix "php:" .platformapp.type }}
+#  database:
+#    type: {{ regexReplaceAll ":.*$" .services.db.type "" }}
+#    version: {{ regexReplaceAll "^.*:" .services.db.type "" }}
+#
+#  docroot: {{ dig "web" "locations" "/" "root" "notfound" .platformapp }}
+#  {{ if eq .platformapp.build.flavor "composer" }}
+#  hooks:
+#    post-start:
+#      - composer: install
+#  {{ if .platformapp.hooks.deploy }}
+#      - exec: "{{ trimAll "\n" .platformapp.hooks.deploy | splitList "\n" | join ` && ` }}"
+#  {{ end }}
+#  {{ end }}
+#
+#  EOF
+
+# list of files and directories listed that are copied into project .ddev directory
+# Each file should contain #ddev-generated so it can be replaced by a later `ddev get`
+# if it hasn't been modified by the user.
+# DDEV environment variables can be interpolated into these filenames
+project_files:
+- docker-compose.addon-template.yaml
+# - extra_files/
+# - somefile.sh
+
+# List of files and directories that are copied into the global .ddev directory
+# DDEV environment variables can be interpolated into these filenames
+global_files:
+# - commands
+# - homeadditions
+
+# DDEV environment variables can be interpolated into these actions
+post_install_actions:
+# - chmod +x ~/.ddev/commands/web/somecommand
+# - touch somefile.${GOOS}.${DDEV_WEBSERVER}
+# - perl -pi -e 's/oldstring/newstring/g' docker-compose.addon-template.yaml
+
+# Advanced usage - yaml files can be read in and then used as go template actions
+# in pre_install_actions and post_install_actions
+# See example in
+# https://github.com/rfay/ddev/blob/20220606_yaml_read_experiment/cmd/ddev/cmd/testdata/TestCmdGetComplex/recipe/install.yaml
+yaml_read_files:
+# someyaml: someyaml.yaml
+# otheryaml: someotheryaml.yaml

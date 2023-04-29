@@ -1,0 +1,88 @@
+name: tests
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+  schedule:
+  - cron: '25 08 * * *'
+
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: Debug with tmate
+        required: false
+        default: false
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  NIGHTLY_DDEV_PR_URL: "https://nightly.link/ddev/ddev/actions/runs/1720215802/ddev-linux-amd64.zip"
+  # Allow ddev get to use a github token to prevent rate limiting by tests
+  DDEV_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  # Allow `--HEAD` flag when running tests against HEAD
+  HOMEBREW_NO_INSTALL_FROM_API: 1
+
+jobs:
+  tests:
+    defaults:
+      run:
+        shell: bash
+
+    strategy:
+      matrix:
+        ddev_version: [stable, HEAD]
+#        ddev_version: [stable, edge, HEAD, PR]
+      fail-fast: false
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Homebrew
+      id: set-up-homebrew
+      uses: Homebrew/actions/setup-homebrew@master
+    - name: Environment setup
+      run: |
+        brew install bats-core mkcert
+        mkcert -install
+
+    - name: Use ddev stable
+      if: matrix.ddev_version == 'stable'
+      run: brew install ddev/ddev/ddev
+
+    - name: Use ddev edge
+      if: matrix.ddev_version == 'edge'
+      run: brew install ddev/ddev-edge/ddev
+
+    - name: Use ddev HEAD
+      if: matrix.ddev_version == 'HEAD'
+      run: brew install --HEAD ddev/ddev/ddev
+
+    - name: Use ddev PR
+      if: matrix.ddev_version == 'PR'
+      run: |
+        curl -sSL -o ddev_linux.zip ${NIGHTLY_DDEV_PR_URL}
+        unzip ddev_linux.zip
+        mv ddev /usr/local/bin/ddev && chmod +x /usr/local/bin/ddev
+
+    - name: Download docker images
+      run: mkdir junk && pushd junk && ddev config --auto && ddev debug download-images >/dev/null
+
+    - name: tmate debugging session
+      uses: mxschmitt/action-tmate@v3
+      with:
+        limit-access-to-actor: true
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+      if: github.event.inputs.debug_enabled == 'true'
+
+    - name: tests
+      run: bats tests
+
+    # keepalive-workflow adds a dummy commit if there's no other action here, keeps
+    # GitHub from turning off tests after 60 days
+    - uses: gautamkrishnar/keepalive-workflow@v1
+      if: matrix.ddev_version == 'stable'

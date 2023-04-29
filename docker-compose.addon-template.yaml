@@ -1,0 +1,16 @@
+#ddev-generated
+# Simple template to demonstrate addon-template
+services:
+  addon-template:
+    container_name: ddev-${DDEV_SITENAME}-addon-template
+    image: busybox:stable
+    command: tail -f /dev/null
+    networks: [default, ddev_default]
+    restart: "no"
+    # These labels ensure this service is discoverable by ddev.
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+
+    volumes:
+    - ".:/mnt/ddev_config"
