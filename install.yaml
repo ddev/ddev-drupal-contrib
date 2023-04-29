@@ -69,7 +69,8 @@ global_files:
 # DDEV environment variables can be interpolated into these actions
 post_install_actions:
   # todo use more dynamic ref.
-  - curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/1.0.x/scripts/symlink_project.php
+  - cd ..
+  - curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/1.0.x/scripts/symlink_project.php ..
   - php symlink_project.php
   - rm -f symlink_project.php
 
