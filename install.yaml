@@ -70,7 +70,7 @@ global_files:
 post_install_actions:
   # todo use more dynamic ref.
   - cd ..
-  - curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/1.0.x/scripts/symlink_project.php ..
+  - curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/1.0.x/scripts/symlink_project.php
   - php symlink_project.php
   - rm -f symlink_project.php
 
