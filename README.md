@@ -5,19 +5,19 @@ As a general philosophy, Your contributed module is the center of the universe. 
 Usage
 ============
 - Git clone your project from drupal.org. 
-- [Add DDEV to your contrib project](https://ddev.readthedocs.io/en/latest/users/project/). 
-- Run `dev get ddev/ddev-drupal-gitlabci`. From now on, each time you start DDEV your module gets symlinked into the web/modules/custom directory so that Drupal can find it (see install.yaml/post_install_actions).
-- Run `ddev composer-ci`. This edits composer.json so that Drupal core becomes a dev dependency.
+- [Add DDEV to your contrib project](https://ddev.readthedocs.io/en/latest/users/project/) if not already added. 
+- Run `ddev get weitzman/ddev-drupal-gitlabci`. From now on, each time you start DDEV your module gets symlinked into the `web/modules/custom` directory so that Drupal can find it (see [install.yaml](https://github.com/weitzman/ddev-drupal-gitlabci/blob/main/install.yaml)).
+- Run `ddev composer-ci`. This edits composer.json so that `drupal/core-recommended` becomes a dev dependency.
 - Run `ddev composer install` or `composer install`
-- Optional: [Install Chrome service for FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
 - Run tests, appending options and arguments as needed. 
   - `ddev phpunit`
-  - `ddev phpcs`
   - `ddev nightwatch`
+  - `ddev phpcs`
 
 Misc
 =======
-- Optional. Check in the composer.json after `ddev composer-ci` runs.
+- Optional: [Install Chrome service for FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
+- Optional. Commit the changes in composer.json after `ddev composer-ci` runs. This saves other users from having to run this command.
 - To sign up for Gitlab CI, see https://www.drupal.org/project/infrastructure/issues/3261803.
 
 **Contributed and maintained by [@weitzman](https://github.com/weitzman)**
