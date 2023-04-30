@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#ddev-generated
+## Command provided by https://github.com/weitzman/ddev-drupal-gitlabci
+## Description: Symlink all root files/dirs into web.modules/custom/[PROJECT_NAME]
+## Usage: symlink-project [flags] [args]
+## Example: "ddev symlink-project"
+## ProjectTypes: drupal8,drupal9,drupal10
+## ExecRaw: true
+
+export _WEB_ROOT=$DDEV_DOCROOT
+#todo use more dynamic ref.
+cd $DDEV_COMPOSER_ROOT
+echo 'cded to ' $DDEV_COMPOSER_ROOT
+curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/1.0.x/scripts/symlink_project.php
+php symlink_project.php $DDEV_SITENAME
+rm -f symlink_project.php

@@ -1,9 +1,10 @@
 #!/bin/bash
 
 #ddev-generated
+## Command provided by https://github.com/weitzman/ddev-drupal-gitlabci
 ## Description: Add Drupal core and other needed dependencies.
-## Usage: composer-ci [flags] [args]
-## Example: "ddev composer-ci"
+## Usage: expand-composer-json [flags] [PROJECT_NAME]
+## Example: "ddev expand-composer-json ctools"
 ## ProjectTypes: drupal8,drupal9,drupal10
 ## ExecRaw: true
 

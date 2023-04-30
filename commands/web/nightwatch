@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #ddev-generated
+## Command provided by https://github.com/weitzman/ddev-drupal-gitlabci
 ## Description: Run nightwatch inside the web container
 ## Usage: nightwatch [flags] [args]
 ## Example: "ddev nightwatch"

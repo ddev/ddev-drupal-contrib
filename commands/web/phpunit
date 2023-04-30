@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #ddev-generated
+## Command provided by https://github.com/weitzman/ddev-drupal-gitlabci
 ## Description: Run phpunit inside the web container
 ## Usage: phpunit [flags] [args]
 ## Example: "ddev phpunit" or "ddev phpunit --stop-on-failure"
