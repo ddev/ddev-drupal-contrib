@@ -56,6 +56,7 @@ pre_install_actions:
 # if it hasn't been modified by the user.
 # DDEV environment variables can be interpolated into these filenames
 project_files:
+  - commands
 # - docker-compose.addon-template.yaml
 # - extra_files/
 # - somefile.sh
@@ -69,9 +70,9 @@ global_files:
 # DDEV environment variables can be interpolated into these actions
 post_install_actions:
   # todo use more dynamic ref.
-  - cd .. && curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/1.0.x/scripts/symlink_project.php
-  - cd .. && php symlink_project.php $DDEV_SITENAME
-  - cd .. &&  rm -f symlink_project.php
+  - cd $DDEV_APPROOT && curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/1.0.x/scripts/symlink_project.php
+  - cd $DDEV_APPROOT && _WEB_ROOT=$DDEV_DOCROOT php symlink_project.php $DDEV_SITENAME
+  - cd $DDEV_APPROOT &&  rm -f symlink_project.php
 
 # Advanced usage - yaml files can be read in and then used as go template actions
 # in pre_install_actions and post_install_actions
