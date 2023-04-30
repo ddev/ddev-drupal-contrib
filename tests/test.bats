@@ -8,8 +8,6 @@ setup() {
   ddev delete -Oy ${PROJNAME} >/dev/null 2>&1 || true
   cd "${TESTDIR}"
   git clone https://git.drupalcode.org/project/keycdn.git
-  ddev config --project-name=${PROJNAME}
-  ddev start -y >/dev/null
 }
 
 health_checks() {
