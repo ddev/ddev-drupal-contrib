@@ -17,7 +17,7 @@ Usage
 Misc
 =======
 - Optional: [Install Chrome service for FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
-- Optional. Commit the changes in composer.json after `ddev expand-composer-json` runs. This saves other users from having to run this command.
+- Optional. Commit the changes .ddev after this plugin installs. This saves other users from having to run this command. Rerun the `ddev get` in order to update the commands from this project.
 - This project reads your `project_type` from DDEV and fetches adds the corresponding version of `drupal/core-recommended` to composer.json. if you are doing something non-standard with project_type, just don't use `ddev expand-composer-json` command.
 - If you add/remove a root file or directory, re-symlink root files via EITHER of these methods 
   - `ddev restart`
