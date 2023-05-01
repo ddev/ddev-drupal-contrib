@@ -33,5 +33,6 @@ teardown() {
   ddev yarn --cwd web/core install
   ddev exec touch web/core/.env
   ddev stylelint --version
-  ddev eslint --version
+  # Awaiting resolution of eslint-plugin-prettier missing error https://drupal.slack.com/archives/CGKLP028K/p1682724930680409
+  # ddev eslint --version
 }
