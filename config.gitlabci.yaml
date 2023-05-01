@@ -2,4 +2,4 @@
 ## Command provided by https://github.com/weitzman/ddev-drupal-gitlabci
 hooks:
   post-start:
-    - exec-host: ddev symlink-project
+    - exec-host: [[ -f vendor/autoload.php ]] && ddev symlink-project

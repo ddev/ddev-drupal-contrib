@@ -31,6 +31,6 @@ teardown() {
   cd ${TESTDIR}/keycdn
   echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR}/keycdn ($(pwd))" >&3
   ddev get ${DIR}
-  ddev restart
+  ddev start
   health_checks
 }
