@@ -30,4 +30,8 @@ teardown() {
   ddev phpcs --version
   ls -al web/modules/custom/${PROJNAME}/tests
   ddev phpunit --version
+  ddev yarn --cwd web/core install
+  ddev exec touch web/core/.env
+  ddev stylelint --version
+  ddev eslint --version
 }

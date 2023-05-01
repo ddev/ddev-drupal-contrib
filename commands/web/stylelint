@@ -8,8 +8,8 @@
 ## ProjectTypes: drupal8,drupal9,drupal10
 ## ExecRaw: true
 
-if yarn --cwd $DDEV_DOCROOT/core stylelint --config ./.stylelintrc.json ../modules/custom/**/*.css >/dev/null ; then
-  yarn --cwd $DDEV_DOCROOT/core --formatter verbose --config ./.stylelintrc.json ../modules/custom/**/*.css --color "$@"
+if yarn --cwd $DDEV_DOCROOT/core stylelint --version >/dev/null ; then
+  yarn --color --cwd $DDEV_DOCROOT/core --config ./.stylelintrc.json ../modules/custom/**/*.css "$@"
 else
   echo "stylelint is not available. You may need to 'ddev yarn --cwd $DDEV_DOCROOT/core install'"
   exit 1
