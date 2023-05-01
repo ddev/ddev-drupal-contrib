@@ -28,8 +28,8 @@ teardown() {
 
 @test "install from directory" {
   set -eu -o pipefail
-  cd ${TESTDIR}
-  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  cd ${TESTDIR}/keycdn
+  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR}/keycdn ($(pwd))" >&3
   ddev get ${DIR}
   ddev restart
   health_checks
