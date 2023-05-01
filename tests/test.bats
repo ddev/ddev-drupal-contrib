@@ -10,16 +10,6 @@ setup() {
   git clone https://git.drupalcode.org/project/keycdn.git
 }
 
-health_checks() {
-  ddev expand-composer-json
-  composer install
-  ddev start
-  ddev drush st
-  ddev phpcs
-  ls -al web/modules/custom/${PROJNAME}/tests
-  ddev phpunit --stop-on-failure
-}
-
 teardown() {
   set -eu -o pipefail
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
@@ -32,5 +22,12 @@ teardown() {
   cd ${TESTDIR}/{PROJNAME}
   echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR}/{PROJNAME} ($(pwd))" >&3
   ddev get ${DIR}
-  health_checks
+  ddev start
+  ddev expand-composer-json
+  composer install
+  ddev symlink-project
+  ddev drush st
+  ddev phpcs
+  ls -al web/modules/custom/${PROJNAME}/tests
+  ddev phpunit --version
 }
