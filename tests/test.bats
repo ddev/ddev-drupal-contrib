@@ -19,8 +19,8 @@ teardown() {
 
 @test "install from directory" {
   set -eu -o pipefail
-  cd ${TESTDIR}/{PROJNAME}
-  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR}/{PROJNAME} ($(pwd))" >&3
+  cd ${TESTDIR}/${PROJNAME}
+  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR}/${PROJNAME} ($(pwd))" >&3
   ddev get ${DIR}
   ddev start
   ddev expand-composer-json
