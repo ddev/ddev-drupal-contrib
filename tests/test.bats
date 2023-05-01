@@ -13,6 +13,7 @@ setup() {
 health_checks() {
   ddev expand-composer-json
   composer install
+  ddev start
   ddev drush st
   ddev phpcs
   ls -al web/modules/custom/${PROJNAME}/tests
@@ -28,9 +29,8 @@ teardown() {
 
 @test "install from directory" {
   set -eu -o pipefail
-  cd ${TESTDIR}/keycdn
-  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR}/keycdn ($(pwd))" >&3
+  cd ${TESTDIR}/{PROJNAME}
+  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR}/{PROJNAME} ($(pwd))" >&3
   ddev get ${DIR}
-  ddev start
   health_checks
 }
