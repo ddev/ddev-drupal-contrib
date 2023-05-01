@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#ddev-generated
+## Command provided by https://github.com/weitzman/ddev-drupal-gitlabci
+## Description: Run stylelint inside the web container
+## Usage: stylelint [flags] [args]
+## Example: "ddev stylelint"
+## ProjectTypes: drupal8,drupal9,drupal10
+## ExecRaw: true
+
+if yarn --cwd $DDEV_DOCROOT/core stylelint --config ./.stylelintrc.json ../modules/custom/**/*.css >/dev/null ; then
+  yarn --cwd $DDEV_DOCROOT/core --formatter verbose --config ./.stylelintrc.json ../modules/custom/**/*.css --color "$@"
+else
+  echo "stylelint is not available. You may need to 'ddev yarn --cwd $DDEV_DOCROOT/core install'"
+  exit 1
+fi
