@@ -21,7 +21,7 @@ This project provides the following DDEV container commands.
 Codebase layout
 ==================
 
-![Folder tree](/assets/folder.png)
+![Folder tree](/assets/folders.png)
 
 Misc
 =======
