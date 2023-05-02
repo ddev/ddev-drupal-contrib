@@ -1,6 +1,4 @@
-DDEV integration for developing Drupal contrib projects. This project reuses the code and approach from the [Drupal Association's Gitlab CI workflow](https://git.drupalcode.org/project/gitlab_templates/).
-
-As a general philosophy, your contributed module is the center of the universe. You should `git clone` it and this directory becomes the root of your codebase.
+DDEV integration for developing Drupal contrib projects. As a general philosophy, your contributed module is the center of the universe. The codebase layout and commands in this project [match the Gitlab CI approach](https://git.drupalcode.org/project/gitlab_templates) from the Drupal Association.
 
 Install
 ===========
