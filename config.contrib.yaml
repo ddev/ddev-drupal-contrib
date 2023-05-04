@@ -3,5 +3,3 @@
 hooks:
   post-start:
     - exec-host: "[[ -f vendor/autoload.php ]] && ddev symlink-project"
-#  pre-composer:
-#    - exec-host: "[[ -f composer.contrib.json ]] && exit 'composer.contrib.json file not found. please run 'ddev expand-composer-json' and then rerun 'ddev composer'"
