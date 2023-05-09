@@ -12,5 +12,5 @@ export _WEB_ROOT=$DDEV_DOCROOT
 #todo use more dynamic ref.
 cd "$DDEV_COMPOSER_ROOT" || exit
 curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/1.0.x/scripts/symlink_project.php
-php symlink_project.php $DDEV_SITENAME
+php symlink_project.php "$DDEV_SITENAME"
 rm -f symlink_project.php

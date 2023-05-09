@@ -9,6 +9,6 @@
 ## ExecRaw: true
 
 export COMPOSER=composer.contrib.json
-.ddev/commands/web/expand-composer-json $DDEV_PROJECT_NAME
+.ddev/commands/web/expand-composer-json "$DDEV_PROJECT_NAME"
 composer install
 rm composer.contrib.json composer.contrib.lock

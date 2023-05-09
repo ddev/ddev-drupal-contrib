@@ -8,4 +8,4 @@
 ## ProjectTypes: drupal8,drupal9,drupal10
 ## ExecRaw: true
 
-yarn --cwd $DDEV_DOCROOT/core test:nightwatch  $DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/modules/custom/ "$@"
+yarn --cwd "$DDEV_DOCROOT/core" test:nightwatch  "$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/modules/custom/" "$@"
