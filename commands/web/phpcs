@@ -12,4 +12,4 @@ if ! command -v phpcs >/dev/null; then
   echo "phpcs is not available. You may need to 'ddev composer install'"
   exit 1
 fi
-phpcs web/modules/custom "$@"
+phpcs -s --report-full --report-summary --report-source web/modules/custom "$@"
