@@ -27,7 +27,7 @@ Misc
 =======
 - Optional: [Install Chrome service for FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
 - Optional. Commit the changes .ddev after this plugin installs. This saves other users from having to install this integration. Rerun the `ddev get` in order to update the commands from this project.
-- This project reads your `project_type` from DDEV and fetches adds the corresponding version of `drupal/core-recommended` to composer.json. if you are doing something non-standard with project_type, don't use `ddev expand-composer-json` command.
+- This project reads your `project_type` from DDEV and fetches adds the corresponding version of `drupal/core-recommended` to composer.json. if you are doing something non-standard with project_type, don't use `ddev poser` command.
 - This project should work for any contrib project, including those that haven't [opted into Gitlab CI](https://www.drupal.org/project/infrastructure/issues/3261803). One advantage of that is that failures in CI are more likely to be reproducible locally when using this integration.
 - If you add/remove a root file or directory, re-symlink root files via EITHER of these methods 
   - `ddev restart`
