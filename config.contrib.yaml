@@ -1,5 +1,5 @@
 #ddev-generated
-## Command provided by https://github.com/weitzman/ddev-drupal-contrib
+## Command provided by https://github.com/ddev/ddev-drupal-contrib
 hooks:
   post-start:
     - exec-host: "[[ -f vendor/autoload.php ]] && ddev symlink-project"

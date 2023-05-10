@@ -4,14 +4,14 @@ Install
 ===========
 1. `git clone` your contrib module
 2. [Add DDEV to your contrib project](https://ddev.readthedocs.io/en/latest/users/project/) if not already added.
-3. Run `ddev get weitzman/ddev-drupal-contrib`.
+3. Run `ddev get ddev/ddev-drupal-contrib`.
 
 Commands
 ============
 This project provides the following DDEV container commands.
 
-- [ddev poser](https://github.com/weitzman/ddev-drupal-contrib/blob/main/commands/web/poser). This edits composer.json so that `drupal/core-recommended` becomes a dev dependency. then, it runs `composer install`. It is perfectly acceptable to skip this command and edit the require-dev of composer.json by hand. 
-- [ddev symlink-project](https://github.com/weitzman/ddev-drupal-contrib/blob/main/commands/web/symlink-project). This symlinks the top level files of your project into web/modules/custom so that Drupal finds your module. This command runs automatically on every `ddev start`. See codebase image below.
+- [ddev poser](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/poser). This edits composer.json so that `drupal/core-recommended` becomes a dev dependency. then, it runs `composer install`. It is perfectly acceptable to skip this command and edit the require-dev of composer.json by hand. 
+- [ddev symlink-project](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/symlink-project). This symlinks the top level files of your project into web/modules/custom so that Drupal finds your module. This command runs automatically on every `ddev start`. See codebase image below.
 - `ddev phpunit`. Run phpunit tests on the web/modules/custom directory.
 - `ddev nightwatch`. Run nightwatch tests on the web/modules/custom directory.
 - `ddev phpcs`. Run phpcs on the web/modules/custom directory.

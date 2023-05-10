@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #ddev-generated
-## Command provided by https://github.com/weitzman/ddev-drupal-contrib
+## Command provided by https://github.com/ddev/ddev-drupal-contrib
 ## Description: Run eslint inside the web container
 ## Usage: eslint [flags] [args]
 ## Example: "ddev eslint"
