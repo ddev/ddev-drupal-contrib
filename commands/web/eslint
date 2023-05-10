@@ -8,8 +8,8 @@
 ## ProjectTypes: drupal8,drupal9,drupal10
 ## ExecRaw: true
 
-if yarn --cwd "$DDEV_DOCROOT/core" eslint --version >/dev/null ; then
-  yarn --cwd "$DDEV_DOCROOT/core" --config .eslintrc.legacy.json eslint ../modules/custom/**/*.js "$@"
+if "$DDEV_DOCROOT/core/node_modules/.bin/eslint" --version >/dev/null ; then
+  "$DDEV_DOCROOT/core/node_modules/.bin/eslint" --no-error-on-unmatched-pattern --ignore-pattern "*.es6.js" --config "$DDEV_DOCROOT/core/.eslintrc.legacy.json" --resolve-plugins-relative-to "$DDEV_DOCROOT/core" "$DDEV_DOCROOT/modules/custom/**/*.js"
 else
   echo "eslint is not available. You may need to 'ddev yarn --cwd $DDEV_DOCROOT/core install'"
   exit 1
