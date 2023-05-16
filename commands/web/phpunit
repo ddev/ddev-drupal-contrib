@@ -12,4 +12,4 @@ if ! command -v phpunit >/dev/null; then
   echo "phpunit is not available. You may need to 'ddev composer install'"
   exit 1
 fi
-phpunit web/modules/custom "$@"
+phpunit --printer="\Drupal\Tests\Listeners\HtmlOutputPrinter" --bootstrap web/core/tests/bootstrap.php --testdox web/modules/custom "$@"
