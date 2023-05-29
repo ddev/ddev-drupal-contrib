@@ -39,4 +39,16 @@ Misc
   - `ddev restart`
   - `ddev symlink-project`
 
+Troubleshooting
+=======
+
+"Error: unknown command":
+
+The commands from this addon are available when the project type a valid `drupal` type.
+Below, is an example `.ddev/config.yaml` for a Drupal 10 project.
+
+```yaml
+type: drupal10
+```
+
 **Contributed and maintained by [@weitzman](https://github.com/weitzman)**
