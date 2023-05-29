@@ -2,12 +2,14 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
 
 Install
 ===========
+
 1. `git clone` your contrib module
 2. [Add DDEV to your contrib project](https://ddev.readthedocs.io/en/latest/users/project/) if not already added.
 3. Run `ddev get ddev/ddev-drupal-contrib`.
 
 Commands
 ============
+
 This project provides the following DDEV container commands.
 
 - [ddev poser](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/poser).
@@ -28,6 +30,7 @@ Codebase layout
 
 Misc
 =======
+
 - Optional: [Install Chrome service for FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
 - Optional. Commit the changes .ddev after this plugin installs. This saves other users from having to install this integration. Rerun the `ddev get` in order to update the commands from this project.
 - This project reads your `project_type` from DDEV and fetches adds the corresponding version of `drupal/core-recommended` to composer.json. if you are doing something non-standard with project_type, don't use `ddev poser` command.
