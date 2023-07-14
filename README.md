@@ -40,6 +40,7 @@ Misc
 - If you add/remove a root file or directory, re-symlink root files via EITHER of these methods
   - `ddev restart`
   - `ddev symlink-project`
+- `cweagans/composer-patches:^1` is added by `ddev poser` so feel free to configure any patches that your project needs.
 
 Troubleshooting
 =======
