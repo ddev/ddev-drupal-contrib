@@ -12,4 +12,4 @@ if ! command -v phpstan >/dev/null; then
   echo "phpstan is not available. You may need to 'ddev composer install'"
   exit 1
 fi
-phpstan analyse web/modules/custom "$@"
+phpstan analyse $DDEV_DOCROOT/modules/custom "$@"
