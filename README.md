@@ -8,6 +8,9 @@ Install
 3. cd [contrib module directory]
 4. Configure DDEV for Drupal 10 using `ddev config --project-name=[contrib module] --project-type=drupal10 --docroot=web --create-docroot --php-version=8.1` or select these options when prompted using `ddev config`
 5. Run `ddev get ddev/ddev-drupal-contrib`.
+6. Run `ddev start`.
+7. Run `ddev poser`.
+8. Run `ddev symlink-project`.
 
 Commands
 ============
@@ -15,7 +18,7 @@ Commands
 This project provides the following DDEV container commands.
 
 - [ddev poser](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/poser).
-  - Edits composer.json so that `drupal/core-recommended` becomes a dev dependency.
+  - Creates a temporary [composer.contrib.json](https://getcomposer.org/doc/03-cli.md#composer) so that `drupal/core-recommended` becomes a dev dependency. This way the composer.json from the module is untouched.
   - Runs `composer install` AND `yarn install` so that dependencies are available.
   - Note: it is perfectly acceptable to skip this command and edit the require-dev of composer.json by hand.
 - [ddev symlink-project](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/symlink-project). This symlinks the top level files of your project into web/modules/custom so that Drupal finds your module. This command runs automatically on every `ddev start`. See codebase image below.
