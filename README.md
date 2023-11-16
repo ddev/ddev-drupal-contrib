@@ -8,6 +8,9 @@ Install
 3. cd [contrib module directory]
 4. Configure DDEV for Drupal 10 using `ddev config --project-name=[contrib module] --project-type=drupal10 --docroot=web --create-docroot --php-version=8.1` or select these options when prompted using `ddev config`
 5. Run `ddev get ddev/ddev-drupal-contrib`.
+6. Run `ddev start`.
+7. Run `ddev poser`.
+8. Run `ddev symlink-project`.
 
 Commands
 ============
