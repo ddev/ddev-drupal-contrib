@@ -25,6 +25,7 @@ This project provides the following DDEV container commands.
 - `ddev phpunit`. Run phpunit tests on the web/modules/custom directory.
 - `ddev nightwatch`. Run nightwatch tests on the web/modules/custom directory.
 - `ddev phpcs`. Run phpcs on the web/modules/custom directory.
+- `ddev phpcbf`. Fix phpcs findings in the web/modules/custom directory.
 - `ddev eslint`. Run eslint on the js files in the web/modules/custom directory.
 - `ddev stylelint`. Run stylelint on the css files in the web/modules/custom directory.
 
