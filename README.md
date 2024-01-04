@@ -7,10 +7,11 @@ Install
 2. `git clone` your contrib module
 3. cd [contrib module directory]
 4. Configure DDEV for Drupal 10 using `ddev config --project-name=[contrib module] --project-type=drupal10 --docroot=web --create-docroot --php-version=8.1` or select these options when prompted using `ddev config`
-5. Run `ddev get ddev/ddev-drupal-contrib`.
-6. Run `ddev start`.
-7. Run `ddev poser`.
-8. Run `ddev symlink-project`.
+   1. If your module has underscores in its name, replace them with hyphens.
+5. Run `ddev get ddev/ddev-drupal-contrib`
+6. Run `ddev start`
+7. Run `ddev poser`
+8. Run `ddev symlink-project`
 
 Commands
 ============
@@ -25,7 +26,7 @@ This project provides the following DDEV container commands.
 - `ddev phpunit`. Run phpunit tests on the web/modules/custom directory.
 - `ddev nightwatch`. Run nightwatch tests on the web/modules/custom directory.
 - `ddev phpcs`. Run phpcs on the web/modules/custom directory.
-- `ddev phpcbf`. Run phpcbf on the web/modules/custom directory.
+- `ddev phpcbf`. Fix phpcs findings in the web/modules/custom directory.
 - `ddev phpstan`. Run phpstan on the web/modules/custom directory.
 - `ddev eslint`. Run eslint on the js files in the web/modules/custom directory.
 - `ddev stylelint`. Run stylelint on the css files in the web/modules/custom directory.
