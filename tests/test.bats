@@ -25,7 +25,7 @@ teardown() {
   ddev config --nodejs-version 18 --project-type=drupal10
   ddev start
   ddev expand-composer-json
-  composer install
+  ddev composer install
   ddev symlink-project
   ddev drush st
   ddev phpcs --version
