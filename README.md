@@ -14,10 +14,10 @@ Commands
 ============
 This project provides the following DDEV container commands.
 
-- [ddev poser](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/poser). 
-  - Edits composer.json so that `drupal/core-recommended` becomes a dev dependency. 
-  - Runs `composer install` AND `yarn install` so that dependencies are available. 
-  - Note: it is perfectly acceptable to skip this command and edit the require-dev of composer.json by hand. 
+- [ddev poser](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/poser).
+  - Edits composer.json so that `drupal/core-recommended` becomes a dev dependency.
+  - Runs `composer install` AND `yarn install` so that dependencies are available.
+  - Note: it is perfectly acceptable to skip this command and edit the require-dev of composer.json by hand.
 - [ddev symlink-project](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/symlink-project). This symlinks the top level files of your project into web/modules/custom so that Drupal finds your module. This command runs automatically on every `ddev start`. See codebase image below.
 - `ddev phpunit`. Run phpunit tests on the web/modules/custom directory.
 - `ddev nightwatch`. Run nightwatch tests on the web/modules/custom directory.
@@ -36,7 +36,7 @@ Misc
 - Optional. Commit the changes .ddev after this plugin installs. This saves other users from having to install this integration. Rerun the `ddev get` in order to update the commands from this project.
 - This project reads your `project_type` from DDEV and fetches adds the corresponding version of `drupal/core-recommended` to composer.json. if you are doing something non-standard with project_type, don't use `ddev poser` command.
 - This project should work for any contrib project, including those that haven't [opted into Gitlab CI](https://www.drupal.org/project/infrastructure/issues/3261803). One advantage of that is that failures in CI are more likely to be reproducible locally when using this integration.
-- If you add/remove a root file or directory, re-symlink root files via EITHER of these methods 
+- If you add/remove a root file or directory, re-symlink root files via EITHER of these methods
   - `ddev restart`
   - `ddev symlink-project`
 
