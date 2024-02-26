@@ -1,3 +1,6 @@
+[![tests](https://github.com/ddev/ddev-drupal-contrib/actions/workflows/tests.yml/badge.svg)](https://github.com/ddev/ddev-drupal-contrib/actions/workflows/tests.yml) ![project is maintained](https://img.shields.io/maintenance/yes/2025.svg)
+
+=======
 # DDEV Drupal Contrib
 
 DDEV integration for developing Drupal contrib projects. As a general philosophy, your contributed module is the center of the universe. The codebase layout (see image below) and commands in this project [match the Gitlab CI approach](https://git.drupalcode.org/project/gitlab_templates) from the Drupal Association.
