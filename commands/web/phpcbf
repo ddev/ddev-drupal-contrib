@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#ddev-generated
+## Command provided by https://github.com/ddev/ddev-drupal-contrib
+## Description: Run phpcbf inside the web container
+## Usage: phpcbf [flags] [args]
+## Example: "ddev phpcbf" or "ddev phpcbf -n"
+## ProjectTypes: drupal8,drupal9,drupal10
+## ExecRaw: true
+
+if ! command -v phpcbf >/dev/null; then
+  echo "phpcbf is not available. You may need to 'ddev composer install'"
+  exit 1
+fi
+test -e phpcs.xml.dist || curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/1.0.x/scripts/phpcs.xml.dist
+phpcbf -s --report-full --report-summary --report-source web/modules/custom "$@"
