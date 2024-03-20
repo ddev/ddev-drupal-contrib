@@ -1,6 +1,5 @@
 [![tests](https://github.com/ddev/ddev-drupal-contrib/actions/workflows/tests.yml/badge.svg)](https://github.com/ddev/ddev-drupal-contrib/actions/workflows/tests.yml) ![project is maintained](https://img.shields.io/maintenance/yes/2025.svg)
 
-=======
 # DDEV Drupal Contrib
 
 DDEV integration for developing Drupal contrib projects. As a general philosophy, your contributed module is the center of the universe. The codebase layout (see image below) and commands in this project [match the Gitlab CI approach](https://git.drupalcode.org/project/gitlab_templates) from the Drupal Association.
@@ -18,6 +17,9 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
 7. Run `ddev poser`
 8. Run `ddev symlink-project`
 
+## Update
+
+Update by running the `ddev get ddev/ddev-drupal-contrib` command.
 
 ## Commands
 
@@ -47,7 +49,7 @@ Run tests on the `web/modules/custom` directory:
 ## Misc
 
 - Optional: [Install Chrome service for FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
-- Optional. Commit the changes in the `.ddev` folder after this plugin installs. This saves other users from having to install this integration. Rerun the `ddev get` in order to update the commands from this project.
+- Optional. Commit the changes in the `.ddev` folder after this plugin installs. This saves other users from having to install this integration.
 - This project reads your `project_type` from DDEV and fetches adds the corresponding version of `drupal/core-recommended` to `composer.json`. if you are doing something non-standard with project_type, don't use `ddev poser` command.
 - This project should work for any contrib project, including those that haven't [opted into Gitlab CI](https://www.drupal.org/project/infrastructure/issues/3261803). One advantage of that is that failures in CI are more likely to be reproducible locally when using this integration.
 - If you add/remove a root file or directory, re-symlink root files via EITHER of these methods
