@@ -87,10 +87,11 @@ You can set up a pre-commit hook that runs phpcbf:
 1. Create a new file `touch .git/hooks/pre-commit` in your repository if it doesn't already exist.
 2. Add the following lines to the `pre-commit` file:
 
-   ```bash
-   #!/bin/bash
+```bash
+#!/bin/bash
 
-   ddev phpcbf -q
+ddev phpcbf -q
+```
 
 3. Mark the file as executable: `chmod +x pre-commit`.
 
