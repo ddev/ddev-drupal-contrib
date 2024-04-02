@@ -35,7 +35,7 @@ Run tests on the `web/modules/custom` directory:
 
 - `ddev phpunit` Run [PHPUnit](https://github.com/sebastianbergmann/phpunit) tests.
 - `ddev nightwatch` Run Nightwatch tests, requires [DDEV Selenium Standalone Chrome](https://github.com/ddev/ddev-selenium-standalone-chrome).
-- `ddev phpcs` Run [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/tree/master).
+- `ddev phpcs` Run [PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer).
 - `ddev phpcbf` Fix phpcs findings.
 - `ddev eslint` Run [ESLint](https://github.com/eslint/eslint) on JavaScript files.
 - `ddev stylelint` Run [Stylelint](https://github.com/stylelint/stylelint) on CSS files.
@@ -80,6 +80,20 @@ Time: 00:13.453, Memory: 4.00 MB
 
 OK (3 tests, 20 assertions)
 ```
+
+## Automatically correct coding standard violations
+
+You can set up a pre-commit hook that runs phpcbf:
+1. Create a new file `touch .git/hooks/pre-commit` in your repository if it doesn't already exist.
+2. Add the following lines to the `pre-commit` file:
+
+   ```bash
+   #!/bin/bash
+
+   ddev phpcbf -q
+
+3. Mark the file as executable: `chmod +x pre-commit`.
+
 
 ## Troubleshooting
 
