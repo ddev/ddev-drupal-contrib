@@ -12,5 +12,5 @@ if ! command -v phpcbf >/dev/null; then
   echo "phpcbf is not available. You may need to 'ddev composer install'"
   exit 1
 fi
-test -e phpcs.xml.dist || curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/1.0.x/scripts/phpcs.xml.dist
+test -e phpcs.xml.dist || curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/phpcs.xml.dist
 phpcbf -s --report-full --report-summary --report-source web/modules/custom "$@"
