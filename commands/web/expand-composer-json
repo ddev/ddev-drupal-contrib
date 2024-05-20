@@ -9,9 +9,6 @@
 ## ExecRaw: true
 
 export _WEB_ROOT=$DDEV_DOCROOT
-[[ $DDEV_PROJECT_TYPE == "drupal10" ]] && export _TARGET_CORE=^10
-[[ $DDEV_PROJECT_TYPE == "drupal9" ]] && export _TARGET_CORE=^9
-[[ $DDEV_PROJECT_TYPE == "drupal8" ]] && export _TARGET_CORE=^8
 cd "$DDEV_COMPOSER_ROOT" || exit
 curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/expand_composer_json.php
 php expand_composer_json.php "$DDEV_SITENAME"
