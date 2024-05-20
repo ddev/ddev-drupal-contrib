@@ -12,6 +12,7 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
 3. cd [contrib module directory]
 4. Configure DDEV for Drupal 10 using `ddev config --project-name=[contrib module] --docroot=web  --php-version=8.1` or select these options when prompted using `ddev config`
    - Remove underscores in the project name, or replace with hyphens.
+   - See [Misc](#misc) for help on using alternate versions of Drupal core.
 5. Run `ddev get ddev/ddev-drupal-contrib`
 6. Run `ddev start`
 7. Run `ddev poser`
@@ -51,7 +52,7 @@ Run tests on the `web/modules/custom` directory:
 - Optional: [Install the ddev-selenium-standalone-chrome extension for FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
 - Optional: [Install the ddev-mkdocs extension for local preview of your docs site](https://github.com/nireneko/ddev-mkdocs). Drupal.org's Gitlab CI can [automatically publish your site](https://project.pages.drupalcode.org/gitlab_templates/jobs/pages/).
 - Optional. Commit the changes in the `.ddev` folder after this plugin installs. This saves other users from having to install this integration.
-- Set `_TARGET_CORE=^11` (or similar) in your DDEV config to specify a different version of Drupal core. This adds the corresponding constraint of `drupal/core-recommended` to the generated `composer.json`.
+- Set `_TARGET_CORE=^11` (or similar) in your DDEV config to specify a different version of Drupal core - `ddev config --web-environment-add=_TARGET_CORE=11`. This adds the corresponding constraint of `drupal/core-recommended` to the generated `composer.json`.
 - This project should work for any contrib project, including those that haven't [opted into Gitlab CI](https://www.drupal.org/project/infrastructure/issues/3261803). One advantage of that is that failures in CI are more likely to be reproducible locally when using this integration.
 - If you add/remove a root file or directory, re-symlink root files via EITHER of these methods
   - `ddev restart`
