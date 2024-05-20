@@ -52,7 +52,7 @@ Run tests on the `web/modules/custom` directory:
 - Optional: [Install the ddev-selenium-standalone-chrome extension for FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
 - Optional: [Install the ddev-mkdocs extension for local preview of your docs site](https://github.com/nireneko/ddev-mkdocs). Drupal.org's Gitlab CI can [automatically publish your site](https://project.pages.drupalcode.org/gitlab_templates/jobs/pages/).
 - Optional. Commit the changes in the `.ddev` folder after this plugin installs. This saves other users from having to install this integration.
-- Set `_TARGET_CORE=^11` (or similar) in your DDEV config to specify a different version of Drupal core - `ddev config --web-environment-add=_TARGET_CORE=11`. This adds the corresponding constraint of `drupal/core-recommended` to the generated `composer.json`.
+- Set `DRUPAL_CORE=^11` (or similar) in your DDEV config to specify a different version of Drupal core. This adds the corresponding constraint of `drupal/core-recommended` to the generated `composer.json`.
 - This project should work for any contrib project, including those that haven't [opted into Gitlab CI](https://www.drupal.org/project/infrastructure/issues/3261803). One advantage of that is that failures in CI are more likely to be reproducible locally when using this integration.
 - If you add/remove a root file or directory, re-symlink root files via EITHER of these methods
   - `ddev restart`
@@ -60,9 +60,9 @@ Run tests on the `web/modules/custom` directory:
 - `cweagans/composer-patches:^1` is added by `ddev poser` so feel free to configure any patches that your project needs.
 
 
-## Example of succesful test
+## Example of successful test
 
-This is what a succesful test looks like, based on [Config Enforce Devel](https://www.drupal.org/project/config_enforce_devel).
+This is what a successful test looks like, based on [Config Enforce Devel](https://www.drupal.org/project/config_enforce_devel).
 
 ```
 user:~/config_enforce_devel$ ddev phpunit

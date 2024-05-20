@@ -2,7 +2,7 @@
 ## Command provided by https://github.com/ddev/ddev-drupal-contrib
 web_environment:
   # If desired, override to a different version of Drupal core in via the project's DDEV config
-  - _TARGET_CORE=^10
+  - DRUPAL_CORE=^10
   - SIMPLETEST_DB=mysql://db:db@db/db
   - SIMPLETEST_BASE_URL=http://web
   - BROWSERTEST_OUTPUT_DIRECTORY=/tmp
