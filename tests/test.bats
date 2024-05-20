@@ -22,7 +22,7 @@ teardown() {
   cd ${TESTDIR}/${PROJNAME}
   echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR}/${PROJNAME} ($(pwd))" >&3
   ddev get ${DIR}
-  ddev config --nodejs-version 18 --project-type=drupal10
+  ddev config --auto
   ddev start
   ddev expand-composer-json
   ddev composer install
