@@ -52,7 +52,7 @@ Run tests on the `web/modules/custom` directory:
 - Optional: [Install the ddev-selenium-standalone-chrome extension for FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
 - Optional: [Install the ddev-mkdocs extension for local preview of your docs site](https://github.com/nireneko/ddev-mkdocs). Drupal.org's Gitlab CI can [automatically publish your site](https://project.pages.drupalcode.org/gitlab_templates/jobs/pages/).
 - Optional. Commit the changes in the `.ddev` folder after this plugin installs. This saves other users from having to install this integration.
-- To customize the version of Drupal core, create a config.personal.yaml (or [any filename lexicographically after config.contrib.yaml](https://ddev.readthedocs.io/en/stable/users/extend/customization-extendibility/#extending-configyaml-with-custom-configyaml-files)) with contents similar to
+- To customize the version of Drupal core, create a config.local.yaml (or [any filename lexicographically after config.contrib.yaml](https://ddev.readthedocs.io/en/stable/users/extend/customization-extendibility/#extending-configyaml-with-custom-configyaml-files)) with contents similar to
 ```
 web_environment:
   - DRUPAL_CORE=^9
