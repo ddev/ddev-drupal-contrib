@@ -52,8 +52,12 @@ Run tests on the `web/modules/custom` directory:
 - Optional: [Install the ddev-selenium-standalone-chrome extension for FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
 - Optional: [Install the ddev-mkdocs extension for local preview of your docs site](https://github.com/nireneko/ddev-mkdocs). Drupal.org's Gitlab CI can [automatically publish your site](https://project.pages.drupalcode.org/gitlab_templates/jobs/pages/).
 - Optional. Commit the changes in the `.ddev` folder after this plugin installs. This saves other users from having to install this integration.
-- Set `DRUPAL_CORE=^11` (or similar) in your DDEV config to specify a different version of Drupal core. This adds the corresponding constraint of `drupal/core-recommended` to the generated `composer.json`.
-- This project should work for any contrib project, including those that haven't [opted into Gitlab CI](https://www.drupal.org/project/infrastructure/issues/3261803). One advantage of that is that failures in CI are more likely to be reproducible locally when using this integration.
+- To customize the version of Drupal core, create a config.local.yaml (or [any filename lexicographically after config.contrib.yaml](https://ddev.readthedocs.io/en/stable/users/extend/customization-extendibility/#extending-configyaml-with-custom-configyaml-files)) with contents similar to
+```
+web_environment:
+  - DRUPAL_CORE=^9
+```
+This adds the value as a constraint of `drupal/core-recommended` to the generated `composer.json`.
 - If you add/remove a root file or directory, re-symlink root files via EITHER of these methods
   - `ddev restart`
   - `ddev symlink-project`
