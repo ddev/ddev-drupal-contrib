@@ -5,7 +5,7 @@
 ## Description: Run phpunit inside the web container
 ## Usage: phpunit [flags] [args]
 ## Example: "ddev phpunit" or "ddev phpunit --stop-on-failure"
-## ProjectTypes: drupal8,drupal9,drupal10
+## ProjectTypes: drupal,drupal8,drupal9,drupal10
 ## ExecRaw: true
 
 if ! command -v phpunit >/dev/null; then
