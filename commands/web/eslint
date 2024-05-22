@@ -5,7 +5,7 @@
 ## Description: Run eslint inside the web container
 ## Usage: eslint [flags] [args]
 ## Example: "ddev eslint"
-## ProjectTypes: drupal8,drupal9,drupal10
+## ProjectTypes: drupal,drupal8,drupal9,drupal10
 ## ExecRaw: true
 
 if "$DDEV_DOCROOT/core/node_modules/.bin/eslint" --version >/dev/null ; then

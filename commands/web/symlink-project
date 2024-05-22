@@ -5,7 +5,7 @@
 ## Description: Symlink all root files/dirs into web.modules/custom/[PROJECT_NAME]
 ## Usage: symlink-project [flags] [args]
 ## Example: "ddev symlink-project"
-## ProjectTypes: drupal8,drupal9,drupal10
+## ProjectTypes: drupal,drupal8,drupal9,drupal10
 ## ExecRaw: true
 
 export _WEB_ROOT=$DDEV_DOCROOT

@@ -5,7 +5,7 @@
 ## Description: Run phpcbf inside the web container
 ## Usage: phpcbf [flags] [args]
 ## Example: "ddev phpcbf" or "ddev phpcbf -n"
-## ProjectTypes: drupal8,drupal9,drupal10
+## ProjectTypes: drupal,drupal8,drupal9,drupal10
 ## ExecRaw: true
 
 if ! command -v phpcbf >/dev/null; then
