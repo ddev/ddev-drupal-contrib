@@ -12,6 +12,7 @@ if ! command -v phpstan >/dev/null; then
   echo "phpstan is not available. You may need to 'ddev composer install'"
   exit 1
 fi
+test -e phpstan.neon || curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/assets/phpstan.neon
 export COMPOSER=composer.contrib.json
 .ddev/commands/web/expand-composer-json "$DDEV_PROJECT_NAME"
 phpstan analyse $DDEV_DOCROOT/modules/custom "$@"
