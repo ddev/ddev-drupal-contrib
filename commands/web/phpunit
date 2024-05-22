@@ -5,11 +5,19 @@
 ## Description: Run phpunit inside the web container
 ## Usage: phpunit [flags] [args]
 ## Example: "ddev phpunit" or "ddev phpunit --stop-on-failure"
-## ProjectTypes: drupal8,drupal9,drupal10
+## ProjectTypes: drupal,drupal8,drupal9,drupal10
 ## ExecRaw: true
 
 if ! command -v phpunit >/dev/null; then
   echo "phpunit is not available. You may need to 'ddev composer install'"
   exit 1
 fi
-phpunit --printer="\Drupal\Tests\Listeners\HtmlOutputPrinter" --bootstrap $PWD/$DDEV_DOCROOT/core/tests/bootstrap.php --testdox $DDEV_DOCROOT/modules/custom "$@"
+
+# CHECK for local config.
+if [ -f "phpunit.xml" ]; then
+    # Defer to local config
+    phpunit "$@"
+else
+    # Bootstrap Drupal tests and run all custom module tests.
+    phpunit --printer="\Drupal\Tests\Listeners\HtmlOutputPrinter" --bootstrap $PWD/$DDEV_DOCROOT/core/tests/bootstrap.php --testdox $DDEV_DOCROOT/modules/custom "$@"
+fi

@@ -5,7 +5,7 @@
 ## Description: Expand composer.json and run composer install.
 ## Usage: poser [flags] [args]
 ## Example: "ddev poser"
-## ProjectTypes: drupal8,drupal9,drupal10
+## ProjectTypes: drupal,drupal8,drupal9,drupal10
 ## ExecRaw: true
 
 export COMPOSER=composer.contrib.json
