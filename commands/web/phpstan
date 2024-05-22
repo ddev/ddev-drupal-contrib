@@ -5,7 +5,7 @@
 ## Description: Run phpstan inside the web container
 ## Usage: phpstan [flags] [args]
 ## Example: "ddev phpstan" or "ddev phpstan -n"
-## ProjectTypes: drupal8,drupal9,drupal10
+## ProjectTypes: drupal,drupal8,drupal9,drupal10
 ## ExecRaw: true
 
 if ! command -v phpstan >/dev/null; then
