@@ -2,3 +2,4 @@ name: ddev-drupal-contrib
 project_files:
   - commands
   - config.contrib.yaml
+  - .gitattributes

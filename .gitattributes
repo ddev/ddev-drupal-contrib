@@ -1,0 +1,5 @@
+#ddev-generated: by https://github.com/ddev/ddev-drupal-contrib
+# You can remove the above line if you want to edit and maintain this file yourself.
+
+# Exclude .ddev/* from Composer package manager builds.
+* export-ignore
