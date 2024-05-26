@@ -23,15 +23,16 @@ if $CSPELL --version >/dev/null ; then
   # state after spellcheck. Passing '.ddev' to the prepare script stores
   # output to .cspell.json.ddev to avoid overwriting the original file.
   curl -OLs https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/prepare-cspell.php
-  export _WEB_ROOT="$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT"
   export CI_PROJECT_NAME="$DDEV_SITENAME"
+  export _WEB_ROOT="$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT"
+  export _CSPELL_IGNORE_PATHS="$DDEV_DOCROOT,.ddev"
   touch .cspell.json.ddev
   php prepare-cspell.php .ddev
   rm prepare-cspell.php
 
   # The cspell `-c` argument requires the filename to end in json.
   mv -f .cspell.json.ddev .cspell.ddev.json
-  $CSPELL -c .cspell.ddev.json --show-suggestions --show-context --no-progress $DDEV_DOCROOT/modules/custom/*/** "$@"
+  $CSPELL -c .cspell.ddev.json --show-suggestions --show-context --no-progress ** "$@"
 
   # Clean-up temporary cspell files.
   rm .cspell.ddev.json
