@@ -40,7 +40,7 @@ Run tests on the `web/modules/custom` directory:
 - `ddev phpcbf` Fix phpcs findings.
 - `ddev eslint` Run [ESLint](https://github.com/eslint/eslint) on JavaScript files.
 - `ddev stylelint` Run [Stylelint](https://github.com/stylelint/stylelint) on CSS files.
-
+- `ddev cspell` Run [Cspell](https://cspell.org/).
 
 ## Codebase layout
 

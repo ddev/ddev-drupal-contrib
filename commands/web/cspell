@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#ddev-generated
+## Command provided by https://github.com/ddev/ddev-drupal-contrib
+## Description: Run cspell inside the web container
+## Usage: cspell [flags] [args]
+## Example: "ddev cspell" or "ddev cspell --version"
+## ProjectTypes: drupal,drupal8,drupal9,drupal10
+## ExecRaw: true
+
+
+CSPELL="$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core/node_modules/.bin/cspell"
+if $CSPELL --version >/dev/null ; then
+
+  # Create required cspell files and note whether they're temporary, for
+  # clean-up later.
+  TMP_PROJECT_WORDS=$(test -e .cspell-project-words.txt ; echo $?)
+  TMP_CSPELL=$(test -e .cspell.json; echo $?)
+  touch .cspell-project-words.txt
+  test -e .cspell.json || curl -OLs https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/assets/.cspell.json
+
+  # Augment .cspell.json for Drupal so it can be restored to its pristine
+  # state after spellcheck. Passing '.ddev' to the prepare script stores
+  # output to .cspell.json.ddev to avoid overwriting the original file.
+  curl -OLs https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/prepare-cspell.php
+  export _WEB_ROOT="$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT"
+  export CI_PROJECT_NAME="$DDEV_SITENAME"
+  touch .cspell.json.ddev
+  php prepare-cspell.php .ddev
+  rm prepare-cspell.php
+
+  # The cspell `-c` argument requires the filename to end in json.
+  mv -f .cspell.json.ddev .cspell.ddev.json
+  $CSPELL -c .cspell.ddev.json --show-suggestions --show-context --no-progress $DDEV_DOCROOT/modules/custom/*/** "$@"
+
+  # Clean-up temporary cspell files.
+  rm .cspell.ddev.json
+  [ "$TMP_PROJECT_WORDS" == "1" ] && rm .cspell-project-words.txt
+  [ "$TMP_CSPELL" == "1" ] && rm .cspell.json
+else
+  echo "cspell is not available. You may need to 'ddev yarn --cwd $DDEV_DOCROOT/core install'"
+  exit 1
+fi
