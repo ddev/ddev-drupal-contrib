@@ -5,7 +5,6 @@
 ## Description: Run stylelint inside the web container
 ## Usage: stylelint [flags] [args]
 ## Example: "ddev stylelint"
-## ProjectTypes: drupal,drupal8,drupal9,drupal10
 ## ExecRaw: true
 
 if yarn --cwd "$DDEV_DOCROOT/core" stylelint --version >/dev/null ; then

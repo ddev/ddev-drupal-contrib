@@ -5,7 +5,6 @@
 ## Description: Run phpcs inside the web container
 ## Usage: phpcs [flags] [args]
 ## Example: "ddev phpcs" or "ddev phpcs -n"
-## ProjectTypes: drupal,drupal8,drupal9,drupal10
 ## ExecRaw: true
 
 if ! command -v phpcs >/dev/null; then

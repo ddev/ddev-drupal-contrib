@@ -5,7 +5,6 @@
 ## Description: Add Drupal core and other needed dependencies.
 ## Usage: expand-composer-json [flags] [PROJECT_NAME]
 ## Example: "ddev expand-composer-json ctools"
-## ProjectTypes: drupal,drupal8,drupal9,drupal10
 ## ExecRaw: true
 
 export _WEB_ROOT=$DDEV_DOCROOT
