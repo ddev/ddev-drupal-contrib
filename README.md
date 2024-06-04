@@ -10,7 +10,7 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
 1. If you haven't already, [install Docker and DDEV](https://ddev.readthedocs.io/en/latest/users/install/)
 2. `git clone` your contrib module
 3. cd [contrib module directory]
-4. Configure DDEV for Drupal 10 using `ddev config --project-name=[contrib module] --project-type=drupal10 --docroot=web  --php-version=8.1` or select these options when prompted using `ddev config`
+4. Configure DDEV for Drupal using `ddev config --project-name=[contrib module] --project-type=drupal --docroot=web  --php-version=8.1` or select these options when prompted using `ddev config`
    - Remove underscores in the project name, or replace with hyphens.
    - See [Misc](#misc) for help on using alternate versions of Drupal core.
 5. Run `ddev get ddev/ddev-drupal-contrib`
