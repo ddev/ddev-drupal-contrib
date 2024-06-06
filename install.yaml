@@ -1,4 +1,12 @@
 name: ddev-drupal-contrib
 project_files:
-  - commands
+  - commands/web/eslint
+  - commands/web/expand-composer-json
+  - commands/web/nightwatch
+  - commands/web/phpcbf
+  - commands/web/phpcs
+  - commands/web/phpunit
+  - commands/web/poser
+  - commands/web/stylelint
+  - commands/web/symlink-project
   - config.contrib.yaml
