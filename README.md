@@ -105,7 +105,7 @@ ddev phpcbf -q
 
 "Error: unknown command":
 
-The commands from this addon are available when the project type a valid `drupal` type. Make sure this the `type` configuration is correctly set in `.ddev/config.yaml`:
+The commands from this addon are available when the project type is a valid `drupal` type. Make sure the `type` configuration is correctly set in `.ddev/config.yaml`:
 
 ```yaml
 type: drupal
