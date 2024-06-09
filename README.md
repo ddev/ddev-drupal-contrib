@@ -111,6 +111,6 @@ The commands from this addon are available when the project type a valid `drupal
 type: drupal
 ```
 
-Make sure you run `ddev restart` if you are updating this file.
+Don't forget to `ddev restart` if `.ddev/config.yaml` has been updated.
 
 **Contributed and maintained by [@weitzman](https://github.com/weitzman)**
