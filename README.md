@@ -111,6 +111,6 @@ The commands from this addon are available when the project type is `drupal`. Ma
 type: drupal
 ```
 
-Don't forget to `ddev restart` if `.ddev/config.yaml` has been updated.
+Don't forget to run `ddev restart` if `.ddev/config.yaml` has been updated.
 
 **Contributed and maintained by [@weitzman](https://github.com/weitzman)**
