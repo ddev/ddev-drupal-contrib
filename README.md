@@ -62,6 +62,7 @@ This adds the value as a constraint of `drupal/core-recommended` to the generate
   - `ddev restart`
   - `ddev symlink-project`
 - `cweagans/composer-patches:^1` is added by `ddev poser` so feel free to configure any patches that your project needs.
+- Any development dependencies (e.g. Drush) should be manually added to require-dev in your project's composer.json file. Don't use the `composer require` command to do that.
 
 
 ## Example of successful test
