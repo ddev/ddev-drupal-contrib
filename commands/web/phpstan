@@ -13,6 +13,8 @@ if ! command -v phpstan >/dev/null; then
   exit 1
 fi
 test -e phpstan.neon || curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/assets/phpstan.neon
+# Add an empty baseline file to ensure it exists.
+test -e phpstan-baseline.neon || touch phpstan-baseline.neon
 export COMPOSER=composer.contrib.json
 .ddev/commands/web/expand-composer-json "$DDEV_PROJECT_NAME"
 phpstan analyse $DDEV_DOCROOT/modules/custom "$@"
