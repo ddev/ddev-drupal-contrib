@@ -29,6 +29,7 @@ teardown() {
   ddev symlink-project
   ddev drush st
   ddev phpcs --version
+  ddev phpstan --version
   ls -al web/modules/custom/${PROJNAME}/tests
   ddev phpunit --version
   ddev yarn --cwd web/core install
