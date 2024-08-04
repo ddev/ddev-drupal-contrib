@@ -38,7 +38,7 @@ Run tests on the `web/modules/custom` directory:
 - `ddev nightwatch` Run Nightwatch tests, requires [DDEV Selenium Standalone Chrome](https://github.com/ddev/ddev-selenium-standalone-chrome).
 - `ddev phpcs` Run [PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer).
 - `ddev phpcbf` Fix phpcs findings.
-- `ddev phpstan`. Run phpstan on the web/modules/custom directory.
+- `ddev phpstan`. Run [phpstan](https://phpstan.org) on the web/modules/custom directory.
 - `ddev eslint` Run [ESLint](https://github.com/eslint/eslint) on JavaScript files.
 - `ddev stylelint` Run [Stylelint](https://github.com/stylelint/stylelint) on CSS files.
 
