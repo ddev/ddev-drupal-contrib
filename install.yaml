@@ -5,6 +5,7 @@ project_files:
   - commands/web/nightwatch
   - commands/web/phpcbf
   - commands/web/phpcs
+  - commands/web/phpstan
   - commands/web/phpunit
   - commands/web/poser
   - commands/web/stylelint

@@ -23,12 +23,14 @@ teardown() {
   echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR}/${PROJNAME} ($(pwd))" >&3
   ddev get ${DIR}
   ddev config --auto
+  ddev config --corepack-enable
   ddev start
   ddev expand-composer-json
   ddev composer install
   ddev symlink-project
   ddev drush st
   ddev phpcs --version
+  ddev phpstan --version
   ls -al web/modules/custom/${PROJNAME}/tests
   ddev phpunit --version
   ddev yarn --cwd web/core install

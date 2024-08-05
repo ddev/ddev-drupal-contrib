@@ -11,5 +11,4 @@ export COMPOSER=composer.contrib.json
 .ddev/commands/web/expand-composer-json "$DDEV_PROJECT_NAME"
 composer install
 rm composer.contrib.json composer.contrib.lock
-yarn --cwd $DDEV_DOCROOT/core install
 touch $DDEV_DOCROOT/core/.env
