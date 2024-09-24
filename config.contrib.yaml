@@ -1,7 +1,8 @@
 #ddev-generated
 ## Command provided by https://github.com/ddev/ddev-drupal-contrib
 web_environment:
-  # If desired, override to a different version of Drupal core in via the project's DDEV config
+  # To change the Drupal core version, see the README:
+  # https://github.com/ddev/ddev-drupal-contrib/blob/main/README.md#changing-the-drupal-core-version
   - DRUPAL_CORE=^10
   - SIMPLETEST_DB=mysql://db:db@db/db
   - SIMPLETEST_BASE_URL=http://web
