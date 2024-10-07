@@ -10,5 +10,8 @@
 export _WEB_ROOT=$DDEV_DOCROOT
 cd "$DDEV_COMPOSER_ROOT" || exit
 curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/expand_composer_json.php
+if [[ ! -f composer.json ]]; then
+  echo "{}" > composer.json
+fi
 php expand_composer_json.php "$DDEV_SITENAME"
 rm -f expand_composer_json.php
