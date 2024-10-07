@@ -10,6 +10,6 @@
 if yarn --cwd "$DDEV_DOCROOT/core" stylelint --version >/dev/null ; then
   yarn --color --cwd "$DDEV_DOCROOT/core" --config ./.stylelintrc.json stylelint ../modules/custom/**/*.css "$@"
 else
-  echo "stylelint is not available. You may need to 'ddev exec \"cd web/core && yarn install\"'"
+  echo "stylelint is not available. You may need to 'ddev exec \"cd $DDEV_DOCROOT/core && yarn install\"'"
   exit 1
 fi
