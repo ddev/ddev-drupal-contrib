@@ -8,7 +8,7 @@ setup_file() {
   cp -R ${DIR}/tests/testdata/test_drupal_contrib/* ${TESTDIR}
   cd ${TESTDIR}
   ddev config  --project-name=${PROJNAME} --project-type=drupal --docroot=web --php-version=8.3 --corepack-enable
-  echo -e "web_environment:\n    - DRUPAL_CORE=^10" > .ddev/config.~overrides.yaml
+  echo -e "web_environment:\n    - DRUPAL_CORE=^11" > .ddev/config.~overrides.yaml
 }
 
 teardown_file() {
@@ -44,7 +44,7 @@ teardown_file() {
 }
 
 @test "node tools availability" {
-  ddev yarn --cwd web/core install
+  ddev exec "cd web/core && yarn install"
   ddev exec touch web/core/.env
   ddev mutagen sync
   ddev stylelint --version
