@@ -7,8 +7,10 @@
 ## Example: "ddev stylelint"
 ## ExecRaw: true
 
-if yarn --cwd "$DDEV_DOCROOT/core" stylelint --version >/dev/null ; then
-  yarn --color --cwd "$DDEV_DOCROOT/core" --config ./.stylelintrc.json stylelint ../modules/custom/**/*.css "$@"
+if $DDEV_DOCROOT/core/node_modules/.bin/stylelint --version >/dev/null ; then
+  # Change directory to the project root folder
+  cd "$DDEV_DOCROOT/modules/custom/${DDEV_SITENAME//-/_}" || exit
+  "$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core/node_modules/.bin/stylelint" --color --config "$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core/.stylelintrc.json" "./**/*.css" "$@"
 else
   echo "stylelint is not available. You may need to 'ddev exec \"cd $DDEV_DOCROOT/core && yarn install\"'"
   exit 1
