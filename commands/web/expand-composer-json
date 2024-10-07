@@ -16,4 +16,6 @@ if [[ ! -f composer.json ]]; then
 fi
 php expand_composer_json.php "$DDEV_SITENAME"
 rm -f expand_composer_json.php
-[ "$_ddev_drupal_contrib_empty_composer" = true ] && rm -f composer.json
+if [ "$_ddev_drupal_contrib_empty_composer" = true ];  then
+  rm -f composer.json
+fi
