@@ -10,8 +10,11 @@
 export _WEB_ROOT=$DDEV_DOCROOT
 cd "$DDEV_COMPOSER_ROOT" || exit
 curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/expand_composer_json.php
+_ddev_drupal_contrib_empty_composer=0
 if [[ ! -f composer.json ]]; then
   echo "{}" > composer.json
+  _ddev_drupal_contrib_empty_composer=1
 fi
 php expand_composer_json.php "$DDEV_SITENAME"
 rm -f expand_composer_json.php
+[ $_ddev_drupal_contrib_empty_composer -eq 1 ] && rm -f composer.json
