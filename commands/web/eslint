@@ -15,6 +15,6 @@ if "$DDEV_DOCROOT/core/node_modules/.bin/eslint" --version >/dev/null ; then
   cd "$DDEV_DOCROOT/modules/custom/$DDEV_SITENAME" || exit
   "$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core/node_modules/.bin/eslint" --no-error-on-unmatched-pattern --ignore-pattern="*.es6.js" --resolve-plugins-relative-to=$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core --ext=.js,.yml . "$@"
 else
-  echo "eslint is not available. You may need to 'ddev yarn --cwd $DDEV_DOCROOT/core install'"
+  echo "eslint is not available. You may need to 'ddev exec \"cd web/core && yarn install\"'"
   exit 1
 fi
