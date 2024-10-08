@@ -8,16 +8,12 @@ setup_file() {
   fi
   load '_common.bash'
   _common_setup
+  ddev start
 }
 
 teardown_file() {
   load '_common.bash'
   _common_teardown
-}
-
-@test "install from directory" {
-  load '_common.bash'
-  _common_test_install
 }
 
 @test "ddev poser without composer.json" {

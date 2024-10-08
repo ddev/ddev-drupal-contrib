@@ -12,16 +12,12 @@ setup_file() {
   if [ "$TEST_DRUPAL_CORE" = "11" ]; then
     ddev config --php-version=8.3 --corepack-enable
   fi
+  ddev start
 }
 
 teardown_file() {
   load '_common.bash'
   _common_teardown
-}
-
-@test "install from directory" {
-  load '_common.bash'
-  _common_test_install
 }
 
 @test "ddev poser with composer.json" {
@@ -30,21 +26,26 @@ teardown_file() {
 }
 
 @test "ddev symlink-project" {
-  load '_common.bash'
-  _common_test_symlink
+  ddev symlink-project
+  ddev mutagen sync
+  ls -la web/modules/custom/test_drupal_contrib/test_drupal_contrib.info.yml
 }
 
 @test "php tools availability" {
-  load '_common.bash'
-  _common_test_php
+  ddev phpcs --version
+  ddev phpstan --version
+  ddev phpunit --version
 }
 
 @test "drupal core version" {
-  load '_common.bash'
-  _common_test_drupal_version
+  run -0 ddev exec 'drush st --fields=drupal-version --format=string | cut -d. -f1'
+  [ "$output" = "${TEST_DRUPAL_CORE}" ]
 }
 
 @test "node tools availability" {
-  load '_common.bash'
-  _common_test_node
+  ddev exec "cd web/core && yarn install"
+  ddev exec touch web/core/.env
+  ddev mutagen sync
+  ddev stylelint --version
+  ddev eslint --version
 }
