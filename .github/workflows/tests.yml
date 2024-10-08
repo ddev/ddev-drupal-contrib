@@ -28,6 +28,7 @@ jobs:
     strategy:
       matrix:
         ddev_version: [stable, HEAD]
+        drupal_version: ["default", "10", "11"]
       fail-fast: false
 
     runs-on: ubuntu-latest
@@ -40,3 +41,4 @@ jobs:
         debug_enabled: ${{ github.event.inputs.debug_enabled }}
         addon_repository: ${{ env.GITHUB_REPOSITORY }}
         addon_ref: ${{ env.GITHUB_REF }}
+        test_command: TEST_DRUPAL_CORE=${{ matrix.drupal_version }} bats tests

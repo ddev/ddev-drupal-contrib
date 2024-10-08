@@ -1,8 +1,17 @@
 setup_file() {
-  export TEST_DRUPAL_CORE=11
+  if [ -z "$TEST_DRUPAL_CORE" ]; then
+    echo "TEST_DRUPAL_CORE is necessary to run tests" >&2
+    exit 1
+  fi
+  if [ "$TEST_DRUPAL_CORE" != "10" ] && [ "$TEST_DRUPAL_CORE" != "11"  ]; then
+    skip "TEST_DRUPAL_CORE=$TEST_DRUPAL_CORE not handled by this test suite" >&2
+  fi
   load '_common.bash'
   _common_setup
-  ddev config --php-version=8.3 --corepack-enable
+  ddev config --php-version=8.2
+  if [ "$TEST_DRUPAL_CORE" = "11" ]; then
+    ddev config --php-version=8.3 --corepack-enable
+  fi
 }
 
 teardown_file() {
