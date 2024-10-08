@@ -30,6 +30,11 @@ teardown_file() {
   _common_test_php
 }
 
+@test "require-dev availability" {
+  load '_common.bash'
+  _common_test_require_dev
+}
+
 @test "node tools availability" {
   load '_common.bash'
   _common_test_node
