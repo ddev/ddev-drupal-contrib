@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 _common_setup() {
+  bats_require_minimum_version 1.5.0
   export DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )/.."
   export PROJNAME=test-drupal-contrib
   export TESTDIR=~/tmp/${PROJNAME}
