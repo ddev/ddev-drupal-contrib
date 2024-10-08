@@ -10,6 +10,7 @@ _common_setup() {
   cp -R ${DIR}/tests/testdata/test_drupal_contrib/* ${TESTDIR}
   cd ${TESTDIR}
   ddev config  --project-name=${PROJNAME} --project-type=drupal --docroot=web
+  echo -e "web_environment:\n    - DRUPAL_CORE=^${TEST_DRUPAL_CORE}" > .ddev/config.~overrides.yaml
 }
 
 _common_teardown() {
@@ -41,8 +42,9 @@ _common_test_php() {
   ddev phpunit --version
 }
 
-_common_test_require_dev() {
-  ddev drush st
+_common_test_drupal_version() {
+  run -0 ddev exec 'drush st --fields=drupal-version --format=string | cut -d. -f1'
+  [ "$output" = "${TEST_DRUPAL_CORE}" ]
 }
 
 _common_test_node() {

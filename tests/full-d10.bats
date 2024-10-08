@@ -1,8 +1,8 @@
 setup_file() {
+  export TEST_DRUPAL_CORE=10
   load '_common.bash'
   _common_setup
   ddev config --php-version=8.2
-  echo -e "web_environment:\n    - DRUPAL_CORE=^10" > .ddev/config.~overrides.yaml
 }
 
 teardown_file() {
@@ -30,9 +30,9 @@ teardown_file() {
   _common_test_php
 }
 
-@test "require-dev availability" {
+@test "drupal core version" {
   load '_common.bash'
-  _common_test_require_dev
+  _common_test_drupal_version
 }
 
 @test "node tools availability" {
