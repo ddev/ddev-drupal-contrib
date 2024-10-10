@@ -11,7 +11,9 @@ _common_setup() {
   cp -R ${DIR}/tests/testdata/test_drupal_contrib/* ${TESTDIR}
   cd ${TESTDIR}
   ddev config  --project-name=${PROJNAME} --project-type=drupal --docroot=web
-  echo -e "web_environment:\n    - DRUPAL_CORE=^${TEST_DRUPAL_CORE}" > .ddev/config.~overrides.yaml
+  if [ "$TEST_DRUPAL_CORE" != "default" ]; then
+    echo -e "web_environment:\n    - DRUPAL_CORE=^${TEST_DRUPAL_CORE}" > .ddev/config.~overrides.yaml
+  fi
   ddev get ${DIR}
 }
 
