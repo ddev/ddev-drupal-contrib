@@ -41,4 +41,4 @@ jobs:
         debug_enabled: ${{ github.event.inputs.debug_enabled }}
         addon_repository: ${{ env.GITHUB_REPOSITORY }}
         addon_ref: ${{ env.GITHUB_REF }}
-        test_command: eval BATS_LIB_PATH=/opt/homebrew/lib TEST_DRUPAL_CORE=${{ matrix.drupal_version }} bats tests
+        test_command: eval BATS_LIB_PATH=$(brew --prefix)/lib TEST_DRUPAL_CORE=${{ matrix.drupal_version }} bats tests
