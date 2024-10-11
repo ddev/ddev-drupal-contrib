@@ -104,6 +104,31 @@ ddev phpcbf -q
 
 3. Mark the file as executable: `chmod +x pre-commit`.
 
+## Add-on tests
+
+Tests are done with Bats. It is a simple testing framework that just uses Bash. 
+To run a Bats test locally, you have to [install bats-core][bats-core] first. 
+Then you can run `bats ./tests` within the root of this project. 
+
+Tests will be run using the default drupal core of the contrib. You can test 
+with a different Drupal core version by providing it in a `TEST_DRUPAL_CORE` environment 
+variable.
+
+i.e. `TEST_DRUPAL_CORE=11 bats ./tests`.
+
+Tests are triggered either manually, automatically on every push to the 
+repository, or periodically each night. The automated tests are agains all of
+the supported Drupal core versions.
+
+Please make sure to attend to test failures when they happen. Others will be 
+depending on you. 
+
+Also, consider adding tests to test for bugs or new features on your PR.
+
+To learn more about Bats see the [documentation][bats-docs].
+
+[bats-core]: https://bats-core.readthedocs.io/en/stable/installation.html
+[bats-docs]: https://bats-core.readthedocs.io/en/stable/
 
 ## Troubleshooting
 
