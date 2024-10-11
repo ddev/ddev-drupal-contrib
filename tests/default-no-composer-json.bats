@@ -1,9 +1,5 @@
 setup_file() {
-  if [ -z "$TEST_DRUPAL_CORE" ]; then
-    echo "TEST_DRUPAL_CORE is necessary to run tests" >&2
-    exit 1
-  fi
-  if [ "$TEST_DRUPAL_CORE" != "default" ]; then
+  if [ -n "$TEST_DRUPAL_CORE" ] && [ "$TEST_DRUPAL_CORE" != "default" ]; then
     skip "TEST_DRUPAL_CORE=$TEST_DRUPAL_CORE not handled by this test suite" >&2
   fi
   load '_common.bash'
