@@ -110,12 +110,15 @@ Tests are done with Bats. It is a simple testing framework that just uses Bash.
 
 To run tests locally you need to first install bats' git submodules with: 
 
-```
-git submodule init
-git submodule update
+```sh
+git submodule update --init
 ```
 
-Then you can run `./tests/bats/bin/bats ./tests` within the root of this project. 
+Then you can run within the root of this project:
+
+```sh
+./tests/bats/bin/bats ./tests
+```
 
 Tests will be run using the default drupal core of the contrib. You can test 
 with a different Drupal core version by providing it in a `TEST_DRUPAL_CORE` environment 
