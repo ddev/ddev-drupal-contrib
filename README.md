@@ -108,7 +108,7 @@ ddev phpcbf -q
 
 Tests are done with Bats. It is a simple testing framework that just uses Bash. 
 
-To run tests locally you need to first install the git submodules with: 
+To run tests locally you need to first install bats' git submodules with: 
 `git submodule init`.
 
 Then you can run `./tests/bats/bin/bats ./tests` within the root of this project. 
