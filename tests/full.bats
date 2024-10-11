@@ -1,5 +1,5 @@
-bats_load_library 'bats-support'
-bats_load_library 'bats-assert'
+load helpers/bats-support/load.bash
+load helpers/bats-assert/load.bash
 
 setup_file() {
   if [ -n "$TEST_DRUPAL_CORE" ] && [ "$TEST_DRUPAL_CORE" != "10" ] && [ "$TEST_DRUPAL_CORE" != "11"  ]; then
