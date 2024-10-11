@@ -25,5 +25,7 @@ _common_teardown() {
 _common_test_poser() {
   ddev poser
   ddev mutagen sync
+  ls -la web/core
+  ls -la vendor/
   ls -la
 }
