@@ -1,5 +1,5 @@
 {
-    "name": "drupal/ddev_drupal_contrab",
+    "name": "drupal/ddev_drupal_contrib",
     "type": "drupal-module",
     "license": "GPL-2.0+",
     "homepage": "https://github.com/ddev/ddev-drupal-contrib",
@@ -10,10 +10,8 @@
             "url": "https://packages.drupal.org/8"
         }
     ],
-    "require": {
-        "drupal/devel": "^5.0"
-    },
     "require-dev": {
+        "drupal/devel": "^5.0",
         "drush/drush": "^11 || ^12 || ^13"
     },
     "config": {
