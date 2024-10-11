@@ -35,7 +35,12 @@ teardown_file() {
 
 @test "drupal core version" {
   run -0 ddev exec 'drush st --fields=drupal-version --format=string | cut -d. -f1'
-  [ "$output" = "${TEST_DRUPAL_CORE}" ]
+  if [ -n "${TEST_DRUPAL_CORE}" ]; then
+    [ "$output" = "${TEST_DRUPAL_CORE}" ]
+  else
+    DDEV_DRUPAL_CORE=$(ddev exec 'echo "${DRUPAL_CORE/^/}"')
+    [ "$output" = "$DDEV_DRUPAL_CORE" ]
+  fi
 }
 
 @test "node tools availability" {
