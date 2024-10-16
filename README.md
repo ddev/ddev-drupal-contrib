@@ -106,7 +106,7 @@ ddev phpcbf -q
 
 ## Add-on tests
 
-Tests are done with Bats. It is a simple testing framework that just uses Bash. 
+Tests are done with Bats. It is a testing framework that uses Bash. 
 
 To run tests locally you need to first install bats' git submodules with: 
 
@@ -120,14 +120,13 @@ Then you can run within the root of this project:
 ./tests/bats/bin/bats ./tests
 ```
 
-Tests will be run using the default drupal core of the contrib. You can test 
-with a different Drupal core version by providing it in a `TEST_DRUPAL_CORE` environment 
+Tests will be run using the default drupal core of the contrib. To test against a different Drupal core version, update the `TEST_DRUPAL_CORE` environment 
 variable.
 
 i.e. `TEST_DRUPAL_CORE=11 ./tests/bats/bin/bats ./tests`.
 
-Tests are triggered either manually, automatically on every push to the 
-repository, or periodically each night. The automated tests are agains all of
+Tests are triggered automatically on every push to the 
+repository, and periodically each night. The automated tests are agains all of
 the supported Drupal core versions.
 
 Please make sure to attend to test failures when they happen. Others will be 
