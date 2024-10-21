@@ -1,0 +1,22 @@
+#!/bin/bash
+
+## #ddev-generated
+## Description: Quickstart command that setup the ddev-contrib-drupal addon for module development.
+## Usage: quickstart
+## Example: ddev quickstart
+
+ddev restart
+ddev poser
+ddev mutagen sync
+ddev symlink-project
+ddev mutagen sync
+cp .ddev/config.yaml .ddev/cmp.config.yaml
+ddev config --update
+ddev mutagen sync
+if ! ddev exec -- cmp -s .ddev/config.yaml .ddev/cmp.config.yaml > /dev/null 2>&1; then
+  echo -e "\033[0;33m[warning] config.yaml changed, restarting ddev.\033[0m"
+  ddev restart
+fi
+ddev exec -- rm .ddev/cmp.config.yaml
+ddev exec "cd web/core && yarn install"
+ddev mutagen sync

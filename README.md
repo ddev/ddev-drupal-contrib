@@ -14,17 +14,18 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
    - Remove underscores in the project name, or replace with hyphens. (DDEV will do this for you in v1.23.5+)
    - See [Misc](#misc) for help on using alternate versions of Drupal core.
 5. Run `ddev get ddev/ddev-drupal-contrib`
-6. Run `ddev start`
-7. Run `ddev poser`
-8. Run `ddev symlink-project`
-9. `ddev config --update` to detect expected Drupal and PHP versions.
-10. `ddev restart`
+6. Run `ddev quickstart` - automatically 
 
 ## Update
 
 Update by running the `ddev get ddev/ddev-drupal-contrib` command.
 
 ## Commands
+
+This project provides the following DDEV host commands.
+
+- [ddev quickstart](commands/host/quickstart)
+  - Runs all necessary commands to get you up and running.
 
 This project provides the following DDEV container commands.
 

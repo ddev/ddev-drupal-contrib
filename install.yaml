@@ -10,4 +10,5 @@ project_files:
   - commands/web/poser
   - commands/web/stylelint
   - commands/web/symlink-project
+  - commands/host/quickstart
   - config.contrib.yaml
