@@ -55,18 +55,23 @@ Run tests on the `web/modules/custom` directory:
 - Optional: [Install the ddev-selenium-standalone-chrome extension for FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
 - Optional: [Install the ddev-mkdocs extension for local preview of your docs site](https://github.com/nireneko/ddev-mkdocs). Drupal.org's Gitlab CI can [automatically publish your site](https://project.pages.drupalcode.org/gitlab_templates/jobs/pages/).
 - Optional. Commit the changes in the `.ddev` folder after this plugin installs. This saves other users from having to install this integration.
-- To customize the version of Drupal core, create a config.local.yaml (or [any filename lexicographically after config.contrib.yaml](https://ddev.readthedocs.io/en/stable/users/extend/customization-extendibility/#extending-configyaml-with-custom-configyaml-files)) with contents similar to
-```
-web_environment:
-  - DRUPAL_CORE=^9
-```
-This adds the value as a constraint of `drupal/core-recommended` to the generated `composer.json`.
 - If you add/remove a root file or directory, re-symlink root files via EITHER of these methods
   - `ddev restart`
   - `ddev symlink-project`
 - `cweagans/composer-patches:^1` is added by `ddev poser` so feel free to configure any patches that your project needs.
 - Any development dependencies (e.g. Drush) should be manually added to require-dev in your project's composer.json file. Don't use the `composer require` command to do that.
 
+### Changing the Drupal core version
+
+- To customize the version of Drupal core, create a `.ddev/config.local.yaml` (or [any filename lexicographically following config.contrib.yaml](https://ddev.readthedocs.io/en/stable/users/extend/customization-extendibility/#extending-configyaml-with-custom-configyaml-files)) with contents similar to
+```
+web_environment:
+  - DRUPAL_CORE=^11
+```
+
+After creating this file, run `ddev restart` and then `ddev poser` to update the Drupal core version.
+
+If Drupal core cannot be changed because the project is using an unsupported version of PHP, `ddev poser` will show a `composer` error. In that case, open `.ddev/config.yaml` and change the `PHP_VERSION` to a supported version; then run `ddev restart` and `ddev poser` again.  Note that the project PHP version is set in `.ddev/config.yaml`, while the core version to use is set in `.ddev/config.local.yaml`. 
 
 ## Example of successful test
 
