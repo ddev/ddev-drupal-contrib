@@ -7,16 +7,12 @@ setup_file() {
   fi
   load '_common.bash'
   _common_setup
-  ddev start
+  ddev quickstart
 }
 
 teardown_file() {
   load '_common.bash'
   _common_teardown
-}
-
-@test "ddev quickstart" {
-  ddev quickstart
 }
 
 @test "php tools availability" {
