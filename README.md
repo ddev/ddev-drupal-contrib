@@ -14,7 +14,7 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
    - Remove underscores in the project name, or replace with hyphens. (DDEV will do this for you in v1.23.5+)
    - See [Misc](#misc) for help on using alternate versions of Drupal core.
 5. Run `ddev get ddev/ddev-drupal-contrib`
-6. Run `ddev quickstart` - automatically 
+6. Run `ddev quickstart`
 
 ## Update
 
