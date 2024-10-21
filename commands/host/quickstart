@@ -10,7 +10,7 @@ set -e -o pipefail
 ddev restart
 DDEV_DRUPAL_CORE=$(ddev exec 'echo "${DRUPAL_CORE/^/}"')
 
-# We have to do this check here, otherwise ddev poser will if the wrong PHP version for the wrong core is setup.
+# We have to do this check here, otherwise ddev poser will fail if the wrong PHP version for the wrong core is setup.
 if [ "$DDEV_DRUPAL_CORE" -ge "11" ] ; then
   echo -e "\033[0;33m[warning] Drupal ${DDEV_DRUPAL_CORE} requires PHP 8.3+, configuring and restarting ddev.\033[0m"
   ddev config --php-version=8.3
