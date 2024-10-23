@@ -7,9 +7,9 @@ setup_file() {
   fi
   load '_common.bash'
   _common_setup
-  ddev config --php-version=8.2
-  if [ "$TEST_DRUPAL_CORE" = "11" ]; then
-    ddev config --php-version=8.3 --corepack-enable
+  if [ "$TEST_DRUPAL_CORE" = "10" ]; then
+    # Test D10 with older PHP version and corepack-disabled
+    ddev config --php-version=8.2 --corepack-enable=false
   fi
   ddev start
 }
