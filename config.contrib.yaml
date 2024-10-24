@@ -3,7 +3,7 @@
 web_environment:
   # To change the Drupal core version, see the README:
   # https://github.com/ddev/ddev-drupal-contrib/blob/main/README.md#changing-the-drupal-core-version
-  - DRUPAL_CORE=^10
+  - DRUPAL_CORE=^11
   - SIMPLETEST_DB=mysql://db:db@db/db
   - SIMPLETEST_BASE_URL=http://web
   - BROWSERTEST_OUTPUT_DIRECTORY=/tmp
