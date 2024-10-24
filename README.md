@@ -13,7 +13,7 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
 4. Configure DDEV for Drupal using `ddev config --project-type=drupal --docroot=web --php-version=8.3 --project-name=[module]` or select these options when prompted using `ddev config`
    - Remove underscores in the project name, or replace with hyphens. (DDEV will do this for you in v1.23.5+)
    - See [Misc](#misc) for help on using alternate versions of Drupal core.
-5. Run `ddev get ddev/ddev-drupal-contrib`
+5. Run `ddev add-on get ddev/ddev-drupal-contrib` (or `ddev get ddev/ddev-drupal-contrib` if your DDEV version is older than 1.23.5)
 6. Run `ddev start`
 7. Run `ddev poser`
 8. Run `ddev symlink-project`
@@ -22,7 +22,17 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
 
 ## Update
 
-Update by running the `ddev get ddev/ddev-drupal-contrib` command.
+For DDEV v1.23.5 or above run
+
+```sh
+ddev add-on get ddev/ddev-drupal-contrib
+```
+
+For earlier versions of DDEV run
+
+```sh
+ddev get ddev/ddev-drupal-contrib
+```
 
 ## Commands
 
