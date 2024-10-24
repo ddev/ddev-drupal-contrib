@@ -13,7 +13,7 @@ if "$DDEV_DOCROOT/core/node_modules/.bin/eslint" --version >/dev/null ; then
   test -e .prettierignore || echo '*.yml' > .prettierignore
   # Change directory to the project root folder
   cd "$DDEV_DOCROOT/modules/custom/${DDEV_SITENAME//-/_}" || exit
-  "$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core/node_modules/.bin/eslint" --no-error-on-unmatched-pattern --ignore-pattern="*.es6.js" --resolve-plugins-relative-to=$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core --ext=.js,.yml . "$@"
+  "$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core/node_modules/.bin/eslint" --config="../../../core/.eslintrc.passing.json" --no-error-on-unmatched-pattern --ignore-pattern="*.es6.js" --resolve-plugins-relative-to=$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core --ext=.js,.yml . "$@"
 else
   echo "eslint is not available. You may need to 'ddev exec \"cd $DDEV_DOCROOT/core && yarn install\"'"
   exit 1
