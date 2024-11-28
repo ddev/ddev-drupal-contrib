@@ -12,4 +12,4 @@ if ! command -v phpcbf >/dev/null; then
   exit 1
 fi
 test -e phpcs.xml.dist || curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/assets/phpcs.xml.dist
-phpcbf -s --report-full --report-summary --report-source web/modules/custom "$@"
+phpcbf -s --report-full --report-summary --report-source $DDEV_DOCROOT/modules/custom "$@"
