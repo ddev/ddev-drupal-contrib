@@ -12,6 +12,8 @@ if ! command -v phpstan >/dev/null; then
   exit 1
 fi
 test -e phpstan.neon || curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/assets/phpstan.neon
+# See https://git.drupalcode.org/project/gitlab_templates/-/commit/a107b7f1f79af12e0b09f70be47b68e3f69b4504
+sed -i 's/BASELINE_PLACEHOLDER/phpstan-baseline.neon/g' phpstan.neon
 # Add an empty baseline file to ensure it exists.
 test -e phpstan-baseline.neon || touch phpstan-baseline.neon
 phpstan analyse $DDEV_DOCROOT/modules/custom "$@"
