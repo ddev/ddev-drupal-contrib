@@ -8,6 +8,7 @@ web_environment:
   - SIMPLETEST_BASE_URL=http://web
   - BROWSERTEST_OUTPUT_DIRECTORY=/tmp
   - BROWSERTEST_OUTPUT_BASE_URL=${DDEV_PRIMARY_URL}
+  - DDEV_DRUPAL_CONTRIB_SYMLINK_DEST=modules/custom
 hooks:
   post-start:
     - exec-host: |
