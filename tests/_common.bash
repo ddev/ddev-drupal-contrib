@@ -12,7 +12,7 @@ _common_setup() {
   cd ${TESTDIR}
   ddev config  --project-name=${PROJNAME} --project-type=drupal --docroot=web --php-version=8.3 --corepack-enable
   if [ -n "$TEST_DRUPAL_CORE" ] && [ "$TEST_DRUPAL_CORE" != "default" ]; then
-    echo -e "web_environment:\n    - DRUPAL_CORE=^${TEST_DRUPAL_CORE}" > .ddev/config.~overrides.yaml
+    echo -e "web_environment:\n    - DRUPAL_CORE=^${TEST_DRUPAL_CORE}\n    - DDEV_DRUPAL_CONTRIB_SYMLINK_DEST=modules/custom" > .ddev/config.~overrides.yaml
   fi
   ddev get ${DIR}
 }
