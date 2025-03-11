@@ -89,7 +89,7 @@ If Drupal core cannot be changed because the project is using an unsupported ver
 
 ### Changing the symlink location
 
-In `.ddev/config.local.yaml` set the location relative to webroot (which usually is `web/`)
+In `.ddev/config.local.yaml` set the location relative to webroot (which usually is `web/`). Defaults to `modules/custom`
 ```
 web_environment:
   - ...
