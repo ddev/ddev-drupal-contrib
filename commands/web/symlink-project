@@ -14,5 +14,5 @@ curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/s
 
 # Symlink name using underscores.
 # @see https://www.drupal.org/docs/develop/creating-modules/naming-and-placing-your-drupal-module
-php "symlink_project.php ${DDEV_SITENAME//-/_} ${DDEV_DRUPAL_CONTRIB_SYMLINK_DEST}"
+php symlink_project.php ${DDEV_SITENAME//-/_} ${DDEV_DRUPAL_CONTRIB_SYMLINK_DEST}
 rm -f symlink_project.php
