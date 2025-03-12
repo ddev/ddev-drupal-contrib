@@ -93,7 +93,7 @@ In `.ddev/config.local.yaml` set the location relative to webroot (which usually
 ```
 web_environment:
   - ...
-  - DDEV_DRUPAL_CONTRIB_SYMLINK_DEST=modules
+  - DRUPAL_PROJECTS_PATH=modules
 ```
 
 Then restart DDEV by running `ddev restart`.
