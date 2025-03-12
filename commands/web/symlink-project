@@ -8,6 +8,7 @@
 ## ExecRaw: true
 
 export _WEB_ROOT=$DDEV_DOCROOT
+export DRUPAL_PROJECTS_PATH=${DRUPAL_PROJECTS_PATH:-modules/custom}
 #todo use more dynamic ref.
 cd "$DDEV_COMPOSER_ROOT" || exit
 curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/symlink_project.php

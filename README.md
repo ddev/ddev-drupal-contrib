@@ -71,17 +71,32 @@ Run tests on the `web/modules/custom` directory:
 - `cweagans/composer-patches:^1` is added by `ddev poser` so feel free to configure any patches that your project needs.
 - Any development dependencies (e.g. Drush) should be manually added to require-dev in your project's composer.json file. Don't use the `composer require` command to do that.
 
+## Changing defaults
+
+Override any environment variable value from [.ddev/config.contrib.yaml](config.contrib.yaml) by creating a `.ddev/config.local.yaml` (or [any filename lexicographically following config.contrib.yaml](https://ddev.readthedocs.io/en/stable/users/extend/customization-extendibility/#extending-configyaml-with-custom-configyaml-files)) file which has the same structure as [.ddev/config.contrib.yaml](config.contrib.yaml). Add your overrides under `web_environment`. 
+
 ### Changing the Drupal core version
 
-- To customize the version of Drupal core, create a `.ddev/config.local.yaml` (or [any filename lexicographically following config.contrib.yaml](https://ddev.readthedocs.io/en/stable/users/extend/customization-extendibility/#extending-configyaml-with-custom-configyaml-files)) with contents similar to
+In `.ddev/config.local.yaml` set the Drupal core version:
 ```
 web_environment:
   - DRUPAL_CORE=^11
 ```
 
-After creating this file, run `ddev restart` and then `ddev poser` to update the Drupal core version.
+Then run `ddev restart` and then `ddev poser` to update the Drupal core version.
 
 If Drupal core cannot be changed because the project is using an unsupported version of PHP, `ddev poser` will show a `composer` error. In that case, open `.ddev/config.yaml` and change the `PHP_VERSION` to a supported version; then run `ddev restart` and `ddev poser` again.  Note that the project PHP version is set in `.ddev/config.yaml`, while the core version to use is set in `.ddev/config.local.yaml`. 
+
+### Changing the symlink location
+
+In `.ddev/config.local.yaml` set the location relative to webroot (which usually is `web/`). Defaults to `modules/custom`
+```
+web_environment:
+  - ...
+  - DRUPAL_PROJECTS_PATH=modules
+```
+
+Then restart DDEV by running `ddev restart`.
 
 ## Example of successful test
 
