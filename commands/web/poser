@@ -4,12 +4,12 @@
 ## Command provided by https://github.com/ddev/ddev-drupal-contrib
 ## Description: Expand composer.json and run composer install.
 ## Usage: poser [flags] [args]
-## Example: "ddev poser"
+## Example: "ddev poser" or "ddev poser --prefer-source"
 ## ExecRaw: true
 
 export COMPOSER=composer.contrib.json
 .ddev/commands/web/expand-composer-json "$DDEV_PROJECT_NAME"
-composer install
+composer install "$@"
 # The -f flag suppresses errors if lock file does not exist.
 rm -f composer.contrib.json composer.contrib.lock
 touch $DDEV_DOCROOT/core/.env
