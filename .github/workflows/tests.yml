@@ -15,11 +15,11 @@ on:
         required: false
         default: false
 
-env:
-  # Allow ddev get to use a github token to prevent rate limiting by tests
-  DDEV_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
-# Required permissions for keep-alive, used by ddev/github-action-add-on-test
+# This is required for "gautamkrishnar/keepalive-workflow", see "ddev/github-action-add-on-test"
 permissions:
   actions: write
 
@@ -34,16 +34,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-      with:
-        submodules: true
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
 
-    - uses: ddev/github-action-add-on-test@v2
-      with:
-        disable_checkout_action: true
-        ddev_version: ${{ matrix.ddev_version }}
-        token: ${{ secrets.GITHUB_TOKEN }}
-        debug_enabled: ${{ github.event.inputs.debug_enabled }}
-        addon_repository: ${{ env.GITHUB_REPOSITORY }}
-        addon_ref: ${{ env.GITHUB_REF }}
-        test_command: eval TEST_DRUPAL_CORE=${{ matrix.drupal_version }} ./tests/bats/bin/bats tests
+      - uses: ddev/github-action-add-on-test@v2
+        with:
+          disable_checkout_action: true
+          ddev_version: ${{ matrix.ddev_version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          debug_enabled: ${{ github.event.inputs.debug_enabled }}
+          addon_repository: ${{ env.GITHUB_REPOSITORY }}
+          addon_ref: ${{ env.GITHUB_REF }}
+          test_command: eval TEST_DRUPAL_CORE=${{ matrix.drupal_version }} ./tests/bats/bin/bats tests
