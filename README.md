@@ -1,4 +1,6 @@
-[![tests](https://github.com/ddev/ddev-drupal-contrib/actions/workflows/tests.yml/badge.svg)](https://github.com/ddev/ddev-drupal-contrib/actions/workflows/tests.yml) ![project is maintained](https://img.shields.io/maintenance/yes/2025.svg)
+[![tests](https://github.com/ddev/ddev-drupal-contrib/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/ddev/ddev-drupal-contrib/actions/workflows/tests.yml?query=branch%3Amain)
+[![last commit](https://img.shields.io/github/last-commit/ddev/ddev-drupal-contrib)](https://github.com/ddev/ddev-drupal-contrib/commits)
+[![release](https://img.shields.io/github/v/release/ddev/ddev-drupal-contrib)](https://github.com/ddev/ddev-drupal-contrib/releases/latest)
 
 # DDEV Drupal Contrib
 
@@ -11,27 +13,22 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
 2. `git clone` your contrib module
 3. cd [contrib module directory]
 4. Configure DDEV for Drupal using `ddev config --project-type=drupal --docroot=web --php-version=8.3 --corepack-enable --project-name=[module]` or select these options when prompted using `ddev config`
-   - Remove underscores in the project name, or replace with hyphens. (DDEV will do this for you in v1.23.5+)
+   - Remove underscores in the project name, or replace with hyphens. (DDEV will do this for you.)
    - See [Misc](#misc) for help on using alternate versions of Drupal core.
-5. Run `ddev add-on get ddev/ddev-drupal-contrib` (or `ddev get ddev/ddev-drupal-contrib` if your DDEV version is older than 1.23.5)
+5. Run `ddev add-on get ddev/ddev-drupal-contrib`
 6. Run `ddev start`
 7. Run `ddev poser`
 8. Run `ddev symlink-project`
 9. `ddev config --update` to detect expected Drupal and PHP versions.
 10. `ddev restart`
 
+After installation, make sure to commit the `.ddev` directory to version control.
+
 ## Update
 
-For DDEV v1.23.5 or above run
-
-```sh
+```bash
 ddev add-on get ddev/ddev-drupal-contrib
-```
-
-For earlier versions of DDEV run
-
-```sh
-ddev get ddev/ddev-drupal-contrib
+ddev restart
 ```
 
 ## Commands
@@ -73,24 +70,26 @@ Run tests on the `web/modules/custom` directory:
 
 ## Changing defaults
 
-Override any environment variable value from [.ddev/config.contrib.yaml](config.contrib.yaml) by creating a `.ddev/config.local.yaml` (or [any filename lexicographically following config.contrib.yaml](https://ddev.readthedocs.io/en/stable/users/extend/customization-extendibility/#extending-configyaml-with-custom-configyaml-files)) file which has the same structure as [.ddev/config.contrib.yaml](config.contrib.yaml). Add your overrides under `web_environment`. 
+Override any environment variable value from [.ddev/config.contrib.yaml](config.contrib.yaml) by creating a `.ddev/config.local.yaml` (or [any filename lexicographically following config.contrib.yaml](https://ddev.readthedocs.io/en/stable/users/extend/customization-extendibility/#extending-configyaml-with-custom-configyaml-files)) file which has the same structure as [.ddev/config.contrib.yaml](config.contrib.yaml). Add your overrides under `web_environment`.
 
 ### Changing the Drupal core version
 
 In `.ddev/config.local.yaml` set the Drupal core version:
-```
+
+```yaml
 web_environment:
   - DRUPAL_CORE=^11
 ```
 
 Then run `ddev restart` and then `ddev poser` to update the Drupal core version.
 
-If Drupal core cannot be changed because the project is using an unsupported version of PHP, `ddev poser` will show a `composer` error. In that case, open `.ddev/config.yaml` and change the `PHP_VERSION` to a supported version; then run `ddev restart` and `ddev poser` again.  Note that the project PHP version is set in `.ddev/config.yaml`, while the core version to use is set in `.ddev/config.local.yaml`. 
+If Drupal core cannot be changed because the project is using an unsupported version of PHP, `ddev poser` will show a `composer` error. In that case, open `.ddev/config.yaml` and change the `PHP_VERSION` to a supported version; then run `ddev restart` and `ddev poser` again.  Note that the project PHP version is set in `.ddev/config.yaml`, while the core version to use is set in `.ddev/config.local.yaml`.
 
 ### Changing the symlink location
 
 In `.ddev/config.local.yaml` set the location relative to webroot (which usually is `web/`). Defaults to `modules/custom`
-```
+
+```yaml
 web_environment:
   - ...
   - DRUPAL_PROJECTS_PATH=modules
@@ -127,7 +126,7 @@ You can set up a pre-commit hook that runs phpcbf:
 2. Add the following lines to the `pre-commit` file:
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 
 ddev phpcbf -q
 ```
@@ -136,31 +135,31 @@ ddev phpcbf -q
 
 ## Add-on tests
 
-Tests are done with Bats. It is a testing framework that uses Bash. 
+Tests are done with Bats. It is a testing framework that uses Bash.
 
-To run tests locally you need to first install bats' git submodules with: 
+To run tests locally you need to first install bats' git submodules with:
 
-```sh
+```bash
 git submodule update --init
 ```
 
 Then you can run within the root of this project:
 
-```sh
+```bash
 ./tests/bats/bin/bats ./tests
 ```
 
-Tests will be run using the default drupal core of the contrib. To test against a different Drupal core version, update the `TEST_DRUPAL_CORE` environment 
+Tests will be run using the default drupal core of the contrib. To test against a different Drupal core version, update the `TEST_DRUPAL_CORE` environment
 variable.
 
 i.e. `TEST_DRUPAL_CORE=11 ./tests/bats/bin/bats ./tests`.
 
-Tests are triggered automatically on every push to the 
+Tests are triggered automatically on every push to the
 repository, and periodically each night. The automated tests are agains all of
 the supported Drupal core versions.
 
-Please make sure to attend to test failures when they happen. Others will be 
-depending on you. 
+Please make sure to attend to test failures when they happen. Others will be
+depending on you.
 
 Also, consider adding tests to test for bugs or new features on your PR.
 
@@ -179,5 +178,7 @@ type: drupal
 ```
 
 Don't forget to run `ddev restart` if `.ddev/config.yaml` has been updated.
+
+## Credits
 
 **Contributed and maintained by [@weitzman](https://github.com/weitzman)**

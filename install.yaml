@@ -1,4 +1,5 @@
 name: ddev-drupal-contrib
+
 project_files:
   - commands/web/eslint
   - commands/web/expand-composer-json
@@ -11,3 +12,5 @@ project_files:
   - commands/web/stylelint
   - commands/web/symlink-project
   - config.contrib.yaml
+
+ddev_version_constraint: '>= v1.24.3'
