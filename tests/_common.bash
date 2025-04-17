@@ -6,7 +6,8 @@ _common_setup() {
   export PROJNAME=test-drupal-contrib
   export TESTDIR=~/tmp/${PROJNAME}
   mkdir -p $TESTDIR
-  export DDEV_NON_INTERACTIVE=true
+  export DDEV_NONINTERACTIVE=true
+  export DDEV_NO_INSTRUMENTATION=true
   ddev delete -Oy ${PROJNAME} >/dev/null 2>&1 || true
   cp -R ${DIR}/tests/testdata/test_drupal_contrib/* ${TESTDIR}
   cd ${TESTDIR}
@@ -14,7 +15,7 @@ _common_setup() {
   if [ -n "$TEST_DRUPAL_CORE" ] && [ "$TEST_DRUPAL_CORE" != "default" ]; then
     echo -e "web_environment:\n    - DRUPAL_CORE=^${TEST_DRUPAL_CORE}" > .ddev/config.~overrides.yaml
   fi
-  ddev get ${DIR}
+  ddev add-on get ${DIR}
 }
 
 _common_teardown() {
