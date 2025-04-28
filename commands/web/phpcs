@@ -7,9 +7,10 @@
 ## Example: "ddev phpcs" or "ddev phpcs -n"
 ## ExecRaw: true
 
+DRUPAL_PROJECTS_PATH=${DRUPAL_PROJECTS_PATH:-modules/custom}
 if ! command -v phpcs >/dev/null; then
   echo "phpcs is not available. You may need to 'ddev composer install'"
   exit 1
 fi
 test -e phpcs.xml.dist || curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/assets/phpcs.xml.dist
-phpcs -s --report-full --report-summary --report-source $DDEV_DOCROOT/modules/custom --ignore=*/.ddev/* "$@"
+phpcs -s --report-full --report-summary --report-source $DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH --ignore=*/.ddev/* "$@"
