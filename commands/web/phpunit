@@ -7,6 +7,7 @@
 ## Example: "ddev phpunit" or "ddev phpunit --stop-on-failure"
 ## ExecRaw: true
 
+DRUPAL_PROJECTS_PATH=${DRUPAL_PROJECTS_PATH:-modules/custom}
 if ! command -v phpunit >/dev/null; then
   echo "phpunit is not available. You may need to 'ddev composer install'"
   exit 1
@@ -18,5 +19,5 @@ if [ -f "phpunit.xml" ]; then
     phpunit "$@"
 else
     # Bootstrap Drupal tests and run all custom module tests.
-    phpunit --bootstrap $PWD/$DDEV_DOCROOT/core/tests/bootstrap.php $DDEV_DOCROOT/modules/custom "$@"
+    phpunit --bootstrap $PWD/$DDEV_DOCROOT/core/tests/bootstrap.php $DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH "$@"
 fi

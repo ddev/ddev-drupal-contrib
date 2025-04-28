@@ -2,7 +2,7 @@
 
 #ddev-generated
 ## Command provided by https://github.com/ddev/ddev-drupal-contrib
-## Description: Symlink all root files/dirs into web.modules/custom/[PROJECT_NAME]
+## Description: Symlink all root files/dirs into web/modules/custom/[PROJECT_NAME]
 ## Usage: symlink-project [flags] [args]
 ## Example: "ddev symlink-project"
 ## ExecRaw: true
