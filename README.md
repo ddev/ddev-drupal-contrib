@@ -40,7 +40,7 @@ This project provides the following DDEV container commands.
   - Creates a temporary [composer.contrib.json](https://getcomposer.org/doc/03-cli.md#composer) so that `drupal/core-recommended` becomes a dev dependency. This way the composer.json from the module is untouched.
   - Runs `composer install` AND `yarn install` so that dependencies are available. Additional arguments to `ddev poser` like --prefer-source are passed along to `composer install`
   - Note: it is perfectly acceptable to skip this command and edit the require-dev of composer.json by hand.
-- [ddev symlink-project](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/symlink-project). Symlinks the top level files of your project into web/modules/custom so that Drupal finds your module. This command runs automatically on every `ddev start` _as long as Composer has generated `vendor/autoload.php`_ which occurs during `composer install/update`. See codebase image below.
+- [ddev symlink-project](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/symlink-project). Symlinks your project files into the configured location (defaults to `web/modules/custom`) so Drupal can find your module. This command runs automatically on every `ddev start` _as long as Composer has generated `vendor/autoload.php`_ which occurs during `composer install/update`. See codebase image below.
 
 Run tests on your project code (defaults to `web/modules/custom`, [configurable](#changing-the-symlink-location)):
 
@@ -48,7 +48,7 @@ Run tests on your project code (defaults to `web/modules/custom`, [configurable]
 - `ddev nightwatch` Run Nightwatch tests, requires [DDEV Selenium Standalone Chrome](https://github.com/ddev/ddev-selenium-standalone-chrome).
 - `ddev phpcs` Run [PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer).
 - `ddev phpcbf` Fix phpcs findings.
-- `ddev phpstan`. Run [phpstan](https://phpstan.org) on the web/modules/custom directory.
+- `ddev phpstan`. Run [phpstan](https://phpstan.org) on project files.
 - `ddev eslint` Run [ESLint](https://github.com/eslint/eslint) on JavaScript files.
 - `ddev stylelint` Run [Stylelint](https://github.com/stylelint/stylelint) on CSS files.
 
@@ -96,7 +96,7 @@ web_environment:
   - DRUPAL_PROJECTS_PATH=modules
 ```
 
-Then run `ddev restart` and then `ddev symlink-project` to update the symlink location.
+Then run `ddev restart` to update the symlink location.
 
 All [ddev-drupal-contrib commands](#commands) run against your project code in the configured symlink location.
 
