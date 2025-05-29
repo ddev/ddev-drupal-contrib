@@ -42,7 +42,7 @@ This project provides the following DDEV container commands.
   - Note: it is perfectly acceptable to skip this command and edit the require-dev of composer.json by hand.
 - [ddev symlink-project](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/symlink-project). Symlinks the top level files of your project into web/modules/custom so that Drupal finds your module. This command runs automatically on every `ddev start` _as long as Composer has generated `vendor/autoload.php`_ which occurs during `composer install/update`. See codebase image below.
 
-Run tests on the `web/modules/custom` directory:
+Run tests on your project code (defaults to `web/modules/custom`, [configurable](#changing-the-symlink-location)):
 
 - `ddev phpunit` Run [PHPUnit](https://github.com/sebastianbergmann/phpunit) tests.
 - `ddev nightwatch` Run Nightwatch tests, requires [DDEV Selenium Standalone Chrome](https://github.com/ddev/ddev-selenium-standalone-chrome).
