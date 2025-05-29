@@ -7,7 +7,6 @@
 ## Example: "ddev phpunit" or "ddev phpunit --stop-on-failure"
 ## ExecRaw: true
 
-DRUPAL_PROJECTS_PATH=${DRUPAL_PROJECTS_PATH:-modules/custom}
 if ! command -v phpunit >/dev/null; then
   echo "phpunit is not available. You may need to 'ddev composer install'"
   exit 1

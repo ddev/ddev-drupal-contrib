@@ -7,7 +7,6 @@
 ## Example: "ddev phpstan" or "ddev phpstan -n"
 ## ExecRaw: true
 
-DRUPAL_PROJECTS_PATH=${DRUPAL_PROJECTS_PATH:-modules/custom}
 if ! command -v phpstan >/dev/null; then
   echo "phpstan is not available. You may need to 'ddev poser'"
   exit 1

@@ -7,7 +7,6 @@
 ## Example: "ddev phpcbf" or "ddev phpcbf -n"
 ## ExecRaw: true
 
-DRUPAL_PROJECTS_PATH=${DRUPAL_PROJECTS_PATH:-modules/custom}
 if ! command -v phpcbf >/dev/null; then
   echo "phpcbf is not available. You may need to 'ddev composer install'"
   exit 1

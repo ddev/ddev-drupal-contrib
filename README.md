@@ -96,7 +96,11 @@ web_environment:
   - DRUPAL_PROJECTS_PATH=modules
 ```
 
-Then restart DDEV by running `ddev restart`.
+Then run `ddev restart` and then `ddev symlink-project` to update the symlink location.
+
+All [ddev-drupal-contrib commands](#commands) run against your project code in the configured symlink location.
+
+To use with Drupal themes, set `DRUPAL_PROJECTS_PATH=themes/custom` in your config.
 
 ## Example of successful test
 
