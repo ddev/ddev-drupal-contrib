@@ -10,7 +10,8 @@ web_environment:
   - SIMPLETEST_BASE_URL=http://web
   - BROWSERTEST_OUTPUT_DIRECTORY=/tmp
   - BROWSERTEST_OUTPUT_BASE_URL=${DDEV_PRIMARY_URL}
-  # To change the symlink location, see: https://github.com/ddev/ddev-drupal-contrib/blob/main/README.md#changing-the-symlink-location
+  # To change the location of your project code, see the README:
+  # https://github.com/ddev/ddev-drupal-contrib/blob/main/README.md#changing-the-symlink-location
   - DRUPAL_PROJECTS_PATH=modules/custom
 hooks:
   post-start:
