@@ -7,4 +7,4 @@
 ## Example: "ddev nightwatch"
 ## ExecRaw: true
 
-yarn --cwd "$DDEV_DOCROOT/core" test:nightwatch  "$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH/" "$@"
+yarn --cwd "$DDEV_DOCROOT/core" test:nightwatch  "$DDEV_APPROOT/$DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH/" "$@"
