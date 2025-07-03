@@ -1,5 +1,7 @@
 #ddev-generated
 ## Command provided by https://github.com/ddev/ddev-drupal-contrib
+## To customize this configuration, see:
+## https://ddev.readthedocs.io/en/stable/users/extend/customization-extendibility/
 web_environment:
   # To change the Drupal core version, see the README:
   # https://github.com/ddev/ddev-drupal-contrib/blob/main/README.md#changing-the-drupal-core-version
@@ -10,6 +12,9 @@ web_environment:
   - SIMPLETEST_BASE_URL=http://web
   - BROWSERTEST_OUTPUT_DIRECTORY=/tmp
   - BROWSERTEST_OUTPUT_BASE_URL=${DDEV_PRIMARY_URL}
+  # To change the location of your project code, see the README:
+  # https://github.com/ddev/ddev-drupal-contrib/blob/main/README.md#changing-the-symlink-location
+  - DRUPAL_PROJECTS_PATH=modules/custom
 hooks:
   post-start:
     - exec-host: |

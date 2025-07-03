@@ -2,13 +2,12 @@
 
 #ddev-generated
 ## Command provided by https://github.com/ddev/ddev-drupal-contrib
-## Description: Symlink all root files/dirs into web.modules/custom/[PROJECT_NAME]
+## Description: Symlink project files into the configured location (defaults to `web/modules/custom/[PROJECT_NAME]`)
 ## Usage: symlink-project [flags] [args]
 ## Example: "ddev symlink-project"
 ## ExecRaw: true
 
 export _WEB_ROOT=$DDEV_DOCROOT
-export DRUPAL_PROJECTS_PATH=${DRUPAL_PROJECTS_PATH:-modules/custom}
 #todo use more dynamic ref.
 cd "$DDEV_COMPOSER_ROOT" || exit
 curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/symlink_project.php

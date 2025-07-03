@@ -18,5 +18,5 @@ if [ -f "phpunit.xml" ]; then
     phpunit "$@"
 else
     # Bootstrap Drupal tests and run all custom module tests.
-    phpunit --bootstrap $PWD/$DDEV_DOCROOT/core/tests/bootstrap.php $DDEV_DOCROOT/modules/custom "$@"
+    phpunit --bootstrap $PWD/$DDEV_DOCROOT/core/tests/bootstrap.php $DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH "$@"
 fi
