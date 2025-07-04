@@ -16,4 +16,4 @@ project_files:
 ddev_version_constraint: '>= v1.24.6'
 
 dependencies:
-  - ddev-selenium-standalone-chrome
+  - ddev/ddev-selenium-standalone-chrome
