@@ -186,4 +186,6 @@ Don't forget to run `ddev restart` if `.ddev/config.yaml` has been updated.
 
 ## Credits
 
-**Contributed and maintained by [@weitzman](https://github.com/weitzman)**
+Contributed and maintained by Moshe Weitzman ([@weitzman](https://github.com/weitzman)),
+View mxr576's full-sized avatar
+Dezső BICZÓ  ([@mxr576](https://github.com/mxr576))
