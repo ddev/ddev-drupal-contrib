@@ -18,4 +18,10 @@ test -e phpstan.neon || curl -OL https://git.drupalcode.org/project/gitlab_templ
 sed -i 's/BASELINE_PLACEHOLDER/phpstan-baseline.neon/g' phpstan.neon
 # Add an empty baseline file to ensure it exists.
 test -e phpstan-baseline.neon || touch phpstan-baseline.neon
-phpstan analyse $DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH "$@"
+
+EXTENSION_DIRECTORY=$DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH/${DDEV_SITENAME//-/_}
+cd "$EXTENSION_DIRECTORY" || exit 1
+# Ensure PHPStan configuration is symlinked from project root.
+ln -s $DDEV_DOCROOT/phpstan.neon 2>/dev/null || true
+ln -s $DDEV_DOCROOT/phpstan-baseline.neon 2>/dev/null || true
+phpstan analyze . "$@"
