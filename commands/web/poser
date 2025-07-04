@@ -7,6 +7,8 @@
 ## Example: "ddev poser" or "ddev poser --prefer-source"
 ## ExecRaw: true
 
+set -eu -o pipefail
+
 export COMPOSER=composer.contrib.json
 .ddev/commands/web/expand-composer-json "$DDEV_PROJECT_NAME"
 composer install "$@"
