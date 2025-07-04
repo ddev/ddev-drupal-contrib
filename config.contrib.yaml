@@ -8,10 +8,6 @@ web_environment:
   - DRUPAL_CORE=^11
   - # https://git.drupalcode.org/project/gitlab_templates/-/blob/1.9.6/scripts/expand_composer_json.php?ref_type=tags#L15
   - IGNORE_PROJECT_DRUPAL_CORE_VERSION=1
-  - SIMPLETEST_DB=mysql://db:db@db/db
-  - SIMPLETEST_BASE_URL=http://web
-  - BROWSERTEST_OUTPUT_DIRECTORY=/tmp
-  - BROWSERTEST_OUTPUT_BASE_URL=${DDEV_PRIMARY_URL}
   # To change the location of your project code, see the README:
   # https://github.com/ddev/ddev-drupal-contrib/blob/main/README.md#changing-the-symlink-location
   - DRUPAL_PROJECTS_PATH=modules/custom

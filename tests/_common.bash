@@ -15,6 +15,7 @@ _common_setup() {
   if [ -n "$TEST_DRUPAL_CORE" ] && [ "$TEST_DRUPAL_CORE" != "default" ]; then
     echo -e "web_environment:\n    - DRUPAL_CORE=^${TEST_DRUPAL_CORE}" > .ddev/config.~overrides.yaml
   fi
+  ddev add-on get ddev/ddev-selenium-standalone-chrome
   ddev add-on get ${DIR}
 }
 
