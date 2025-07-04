@@ -19,14 +19,9 @@ sed -i 's/BASELINE_PLACEHOLDER/phpstan-baseline.neon/g' phpstan.neon
 # Add an empty baseline file to ensure it exists.
 test -e phpstan-baseline.neon || touch phpstan-baseline.neon
 
-CONTRIB_MODULE_DIR=$(find "$DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH" -mindepth 1 -maxdepth 1 -type d | head -n 1)
-if [ -n "$CONTRIB_MODULE_DIR" ]; then
-  cd "$CONTRIB_MODULE_DIR"
-  # Ensure PHPStan configuration is symlinked from project root.
-  ln -s $DDEV_DOCROOT/phpstan.neon 2>/dev/null || true
-  ln -s $DDEV_DOCROOT/phpstan-baseline.neon 2>/dev/null || true
-  phpstan analyze . "$@"
-else
-  echo "The contrib module directory could not be identified in $DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH"
-  exit 1
-fi
+EXTENSION_DIRECTORY=$DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH/${DDEV_SITENAME//-/_}
+cd "$EXTENSION_DIRECTORY" || exit 1
+# Ensure PHPStan configuration is symlinked from project root.
+ln -s $DDEV_DOCROOT/phpstan.neon 2>/dev/null || true
+ln -s $DDEV_DOCROOT/phpstan-baseline.neon 2>/dev/null || true
+phpstan analyze . "$@"
