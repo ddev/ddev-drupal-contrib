@@ -7,6 +7,8 @@
 ## Example: "ddev eslint"
 ## ExecRaw: true
 
+set -eu -o pipefail
+
 if "$DDEV_DOCROOT/core/node_modules/.bin/eslint" --version >/dev/null ; then
   # Configure prettier
   test -e .prettierrc.json || ln -s $DDEV_DOCROOT/core/.prettierrc.json .

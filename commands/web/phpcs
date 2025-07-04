@@ -7,6 +7,8 @@
 ## Example: "ddev phpcs" or "ddev phpcs -n"
 ## ExecRaw: true
 
+set -eu -o pipefail
+
 if ! command -v phpcs >/dev/null; then
   echo "phpcs is not available. You may need to 'ddev composer install'"
   exit 1

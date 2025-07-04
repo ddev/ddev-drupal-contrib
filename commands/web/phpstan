@@ -7,6 +7,8 @@
 ## Example: "ddev phpstan" or "ddev phpstan -n"
 ## ExecRaw: true
 
+set -eu -o pipefail
+
 if ! command -v phpstan >/dev/null; then
   echo "phpstan is not available. You may need to 'ddev poser'"
   exit 1
