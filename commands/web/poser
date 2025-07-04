@@ -10,7 +10,7 @@
 set -eu -o pipefail
 
 export COMPOSER=composer.contrib.json
-.ddev/commands/web/expand-composer-json "$DDEV_PROJECT_NAME"
+.ddev/commands/web/expand-composer-json
 composer install "$@"
 # The -f flag suppresses errors if lock file does not exist.
 rm -f composer.contrib.json composer.contrib.lock
