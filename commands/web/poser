@@ -6,6 +6,7 @@
 ## Usage: poser [flags] [args]
 ## Example: "ddev poser" or "ddev poser --prefer-source"
 ## ExecRaw: true
+## MutagenSync: true
 
 set -eu -o pipefail
 

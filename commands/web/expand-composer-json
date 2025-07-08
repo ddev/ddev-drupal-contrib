@@ -6,6 +6,7 @@
 ## Usage: expand-composer-json [flags] [PROJECT_NAME]
 ## Example: "ddev expand-composer-json ctools"
 ## ExecRaw: true
+## MutagenSync: true
 
 set -eu -o pipefail
 

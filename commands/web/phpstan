@@ -6,6 +6,7 @@
 ## Usage: phpstan [flags] [args]
 ## Example: "ddev phpstan" or "ddev phpstan -n"
 ## ExecRaw: true
+## MutagenSync: true
 
 set -eu -o pipefail
 
