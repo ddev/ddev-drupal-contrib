@@ -5,7 +5,7 @@
 
 # DDEV Drupal Contrib
 
-DDEV integration for developing Drupal contrib projects. As a general philosophy, your contributed module is the center of the universe. The codebase layout (see image below) and commands in this project [match the Gitlab CI approach](https://git.drupalcode.org/project/gitlab_templates) from the Drupal Association.
+DDEV integration for developing Drupal contrib projects. As a general philosophy, your contributed module/theme is the center of the universe. The codebase layout (see image below) and commands in this project [match the Gitlab CI approach](https://git.drupalcode.org/project/gitlab_templates) from the Drupal Association.
 
 
 ## Install
@@ -39,8 +39,9 @@ This project provides the following DDEV container commands.
 - [ddev poser](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/poser).
   - Creates a temporary [composer.contrib.json](https://getcomposer.org/doc/03-cli.md#composer) so that `drupal/core-recommended` becomes a dev dependency. This way the composer.json from the module is untouched.
   - Runs `composer install` AND `yarn install` so that dependencies are available. Additional arguments to `ddev poser` like --prefer-source are passed along to `composer install`
-  - Note: it is perfectly acceptable to skip this command and edit the require-dev of composer.json by hand.
-- [ddev symlink-project](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/symlink-project). Symlinks your project files into the configured location (defaults to `web/modules/custom`) so Drupal can find your module. This command runs automatically on every `ddev start` _as long as Composer has generated `vendor/autoload.php`_ which occurs during `composer install/update`. See codebase image below.
+  > [!NOTE]
+  > It is perfectly acceptable to skip this command and edit the require-dev of composer.json by hand.
+  - [ddev symlink-project](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/symlink-project). Symlinks your project files into the configured location (defaults to `web/modules/custom`) so Drupal can find your module. This command runs automatically on every `ddev start` _as long as Composer has generated `vendor/autoload.php`_ which occurs during `composer install/update`. See codebase image below.
 
 Run tests on your project code (defaults to `web/modules/custom`, [configurable](#changing-the-symlink-location)):
 
@@ -93,14 +94,12 @@ In `.ddev/config.local.yaml` set the location relative to webroot (which usually
 ```yaml
 web_environment:
   - ...
-  - DRUPAL_PROJECTS_PATH=modules
+  - DRUPAL_PROJECTS_PATH=modules/custom
 ```
 
 Then run `ddev restart` to update the symlink location.
 
-All [ddev-drupal-contrib commands](#commands) run against your project code in the configured symlink location.
-
-To use with Drupal themes, set `DRUPAL_PROJECTS_PATH=themes/custom` in your config.
+To use with Drupal themes, set `DRUPAL_PROJECTS_PATH=themes/custom` in your config.local.yaml.
 
 ## Example of successful test
 
@@ -138,11 +137,22 @@ ddev phpcbf -q
 
 3. Mark the file as executable: `chmod +x pre-commit`.
 
-## Add-on tests
+## Troubleshooting
 
-Tests are done with Bats. It is a testing framework that uses Bash.
+"Error: unknown command":
 
-To run tests locally you need to first install bats' git submodules with:
+The commands from this addon are available when the project type is `drupal`. Make sure the `type` configuration is correctly set in `.ddev/config.yaml`:
+
+```yaml
+type: drupal
+```
+
+> [!TIP]
+> Remember to run `ddev restart` if `.ddev/config.yaml` has been updated.
+
+## Contributing
+
+Tests are done with Bats. It is a testing framework that uses Bash. To run tests locally you need to first install bats' git submodules with:
 
 ```bash
 git submodule update --init
@@ -160,29 +170,14 @@ variable.
 i.e. `TEST_DRUPAL_CORE=11 ./tests/bats/bin/bats ./tests`.
 
 Tests are triggered automatically on every push to the
-repository, and periodically each night. The automated tests are agains all of
+repository, and periodically each night. The automated tests are against all of
 the supported Drupal core versions.
 
-Please make sure to attend to test failures when they happen. Others will be
-depending on you.
-
-Also, consider adding tests to test for bugs or new features on your PR.
+Also, consider adding tests in your PR.
 
 To learn more about Bats see the [documentation][bats-docs].
 
 [bats-docs]: https://bats-core.readthedocs.io/en/stable/
-
-## Troubleshooting
-
-"Error: unknown command":
-
-The commands from this addon are available when the project type is `drupal`. Make sure the `type` configuration is correctly set in `.ddev/config.yaml`:
-
-```yaml
-type: drupal
-```
-
-Don't forget to run `ddev restart` if `.ddev/config.yaml` has been updated.
 
 ## Credits
 
