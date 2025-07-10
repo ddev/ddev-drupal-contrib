@@ -1,6 +1,7 @@
 name: ddev-drupal-contrib
 
 project_files:
+  - commands/host/core-version
   - commands/web/eslint
   - commands/web/expand-composer-json
   - commands/web/nightwatch
