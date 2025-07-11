@@ -28,6 +28,7 @@ After installation, make sure to commit the `.ddev` directory to version control
 ## Update
 
 ```bash
+ddev add-on get ddev/ddev-selenium-standalone-chrome
 ddev add-on get ddev/ddev-drupal-contrib
 ddev restart
 ```
@@ -60,7 +61,7 @@ Run tests on your project code (defaults to `web/modules/custom`, [configurable]
 
 ## Misc
 
-- Optional: [Install the ddev-selenium-standalone-chrome extension for FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
+- The [ddev-selenium-standalone-chrome add-on helps run FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome). This add-on already depends on that one so you likely have it installed.
 - Optional: [Install the ddev-mkdocs extension for local preview of your docs site](https://github.com/nireneko/ddev-mkdocs). Drupal.org's Gitlab CI can [automatically publish your site](https://project.pages.drupalcode.org/gitlab_templates/jobs/pages/).
 - Optional. Commit the changes in the `.ddev` folder after this plugin installs. This saves other users from having to install this integration.
 - If you add/remove a root file or directory, re-symlink root files via EITHER of these methods
@@ -169,12 +170,11 @@ variable.
 i.e. `TEST_DRUPAL_CORE=11 ./tests/bats/bin/bats ./tests`.
 
 Tests are triggered automatically on every push to the
-repository, and periodically each night. The automated tests are against all of
-the supported Drupal core versions.
+repository, and periodically each night. The automated tests are against all the supported Drupal core versions.
 
 Also, consider adding tests in your PR.
 
-To learn more about Bats see the [documentation][bats-docs].
+To learn more about Bats, see the [documentation][bats-docs].
 
 [bats-docs]: https://bats-core.readthedocs.io/en/stable/
 
