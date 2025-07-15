@@ -13,7 +13,7 @@ _common_setup() {
   cd ${TESTDIR}
   ddev config --project-name=${PROJNAME} --project-type=drupal --docroot=web --php-version=8.3 --corepack-enable
   if [ -n "$TEST_DRUPAL_CORE" ] && [ "$TEST_DRUPAL_CORE" != "default" ]; then
-    echo -e "web_environment:\n    - DRUPAL_CORE=^${TEST_DRUPAL_CORE}" > .ddev/config.~overrides.yaml
+    ddev dotenv set .ddev/.env --drupal-core "^${TEST_DRUPAL_CORE}"
   fi
   ddev add-on get ddev/ddev-selenium-standalone-chrome
   ddev add-on get ${DIR}

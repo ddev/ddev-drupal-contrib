@@ -82,13 +82,10 @@ Use the `ddev core-version` command to set the core version environment variable
 ddev core-version ^11
 ```
 
-You can also do this manually:
+You can also do this manually by setting a version in `.ddev/.env`:
 
-In `.ddev/config.local.yaml` set the Drupal core version:
-
-```yaml
-web_environment:
-  - DRUPAL_CORE=^11
+```ini
+DRUPAL_CORE=^11
 ```
 
 Then run `ddev restart` and then `ddev poser` to update the Drupal core version.

@@ -8,18 +8,15 @@
 
 set -eu -o pipefail
 
-# Handle when config.local.yaml doesn't exist, or has no web_environment key.
-if [[ ! -f .ddev/config.local.yaml || ! `grep '^web_environment:' .ddev/config.local.yaml` ]]; then
-  echo -e "web_environment:\n  - DRUPAL_CORE=$1" >> .ddev/config.local.yaml
-# Handle when we have a DRUPAL_CORE env var already.
-elif [[ `grep 'DRUPAL_CORE=' .ddev/config.local.yaml` ]]; then
-  sed -ri "s/^(\s+)- DRUPAL_CORE=.*/\1- DRUPAL_CORE=$1/" .ddev/config.local.yaml
-# Handle when we do not have a DRUPAL_CORE env var already.
-else
-  # Additionally handle if web_environment is set to an empty array.
-  sed -ri "s/web_environment:\s+\[\s*\]/web_environment:/" .ddev/config.local.yaml
-  sed -i "/web_environment:/a \ \ - DRUPAL_CORE=$1" .ddev/config.local.yaml
+# Handle default values.
+DRUPAL_CORE=${1:-default}
+if [ "$DRUPAL_CORE" == "default" ]; then
+  DRUPAL_CORE=""
 fi
 
+# Set/clear the env.
+ddev dotenv set .ddev/.env --drupal-core "${DRUPAL_CORE}"
+
+# Restart and rebuild.
 ddev restart
 ddev poser
