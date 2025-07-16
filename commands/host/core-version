@@ -15,7 +15,7 @@ if [ "$DRUPAL_CORE" == "default" ]; then
 fi
 
 # Set/clear the env.
-ddev dotenv set .ddev/.env --drupal-core "${DRUPAL_CORE}"
+ddev dotenv set .ddev/.env.web --drupal-core "${DRUPAL_CORE}"
 
 # Restart and rebuild.
 ddev restart

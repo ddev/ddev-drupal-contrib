@@ -82,7 +82,7 @@ Use the `ddev core-version` command to set the core version environment variable
 ddev core-version ^11
 ```
 
-You can also do this manually by setting a version in `.ddev/.env`:
+You can also do this manually by setting a version in `.ddev/.env.web`:
 
 ```ini
 DRUPAL_CORE=^11
