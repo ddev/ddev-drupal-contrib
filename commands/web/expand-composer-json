@@ -10,6 +10,9 @@
 
 set -eu -o pipefail
 
+# Set the default core version.
+export DRUPAL_CORE=${DRUPAL_CORE:-^11}
+
 export _WEB_ROOT=$DDEV_DOCROOT
 cd "$DDEV_COMPOSER_ROOT" || exit
 curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/expand_composer_json.php

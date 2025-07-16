@@ -38,12 +38,8 @@ teardown_file() {
 
 @test "drupal core version" {
   run -0 ddev exec 'drush st --fields=drupal-version --format=string | cut -d. -f1'
-  if [ -n "${TEST_DRUPAL_CORE}" ]; then
-    assert_output "${TEST_DRUPAL_CORE}"
-  else
-    DDEV_DRUPAL_CORE=$(ddev exec 'echo "${DRUPAL_CORE/^/}"')
-    assert_output "$DDEV_DRUPAL_CORE"
-  fi
+  # Default core version is ^11.
+  assert_output "${TEST_DRUPAL_CORE:-11}"
 }
 
 @test "node tools availability" {

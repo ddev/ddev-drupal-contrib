@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+#ddev-generated
+## Command provided by https://github.com/ddev/ddev-drupal-contrib
+## Description: Switch the core version and rebuild.
+## Usage: core-version [version]
+## Example: "ddev core-version ^11" or "ddev core-version ~11.1.0"
+
+set -eu -o pipefail
+
+# Handle default values.
+DRUPAL_CORE=${1:-default}
+if [ "$DRUPAL_CORE" == "default" ]; then
+  DRUPAL_CORE=""
+fi
+
+# Set/clear the env.
+ddev dotenv set .ddev/.env.web --drupal-core "${DRUPAL_CORE}"
+
+# Restart and rebuild.
+ddev restart
+ddev poser
