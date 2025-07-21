@@ -76,7 +76,7 @@ Override any environment variable value from [.ddev/config.contrib.yaml](config.
 
 ### Changing the Drupal core version
 
-Use the `ddev core-version` command to set the core version environment variable and update the code, for example:
+Use the `ddev core-version` command to set the core version environment variable and update the dependencies, for example:
 
 ```shell
 ddev core-version ^11
