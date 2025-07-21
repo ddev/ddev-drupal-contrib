@@ -15,7 +15,7 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
 3. cd [contrib module directory]
 4. Configure DDEV for Drupal using `ddev config --project-type=drupal --docroot=web --php-version=8.3 --corepack-enable --project-name=[module]` or select these options when prompted using `ddev config`
    - Remove underscores in the project name, or replace with hyphens. (DDEV will do this for you.)
-   - See [Misc](#misc) for help on using alternate versions of Drupal core.
+   - See [Changing the Drupal core version](#changing-the-drupal-core-version) to update your  version of Drupal core.
 5. Run `ddev add-on get ddev/ddev-selenium-standalone-chrome && ddev add-on get ddev/ddev-drupal-contrib`
 6. Run `ddev start`
 7. Run `ddev poser`
@@ -42,9 +42,6 @@ This project provides the following DDEV container commands.
   - Runs `composer install` AND `yarn install` so that dependencies are available. Additional arguments to `ddev poser` like --prefer-source are passed along to `composer install`
   - Note: it is perfectly acceptable to skip this command and edit the require-dev of composer.json by hand.
 - [ddev symlink-project](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/symlink-project). Symlinks your project files into the configured location (defaults to `web/modules/custom`) so Drupal can find your module. This command runs automatically on every `ddev start` _as long as Composer has generated `vendor/autoload.php`_ which occurs during `composer install/update`. See codebase image below.
-
-Run tests on your project code (defaults to `web/modules/custom`, [configurable](#changing-the-symlink-location)):
-
 - `ddev phpunit` Run [PHPUnit](https://github.com/sebastianbergmann/phpunit) tests.
 - `ddev nightwatch` Run Nightwatch tests, requires [DDEV Selenium Standalone Chrome](https://github.com/ddev/ddev-selenium-standalone-chrome).
 - `ddev phpcs` Run [PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer).
@@ -52,7 +49,7 @@ Run tests on your project code (defaults to `web/modules/custom`, [configurable]
 - `ddev phpstan`. Run [phpstan](https://phpstan.org) on project files.
 - `ddev eslint` Run [ESLint](https://github.com/eslint/eslint) on JavaScript files.
 - `ddev stylelint` Run [Stylelint](https://github.com/stylelint/stylelint) on CSS files.
-
+- `ddev core-version`. Update your codebase to newer or older version of Drupal core. [More info](#changing-the-drupal-core-version).
 
 ## Codebase layout
 
