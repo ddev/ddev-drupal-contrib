@@ -15,6 +15,3 @@ project_files:
   - config.contrib.yaml
 
 ddev_version_constraint: '>= v1.24.6'
-
-dependencies:
-  - ddev/ddev-selenium-standalone-chrome
