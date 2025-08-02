@@ -87,7 +87,7 @@ DRUPAL_CORE=^11
 
 Then run `ddev restart` and then `ddev poser` to update the Drupal core version.
 
-If Drupal core cannot be changed because the project is using an unsupported version of PHP, `ddev poser` will show a `composer` error. In that case, open `.ddev/config.yaml` and change the `PHP_VERSION` to a supported version; then run `ddev restart` and `ddev poser` again.  Note that the project PHP version is set in `.ddev/config.yaml`, while the core version to use is set in `.ddev/config.local.yaml`.
+If Drupal core cannot be changed because the project is using an unsupported version of PHP, `ddev poser` will show a `composer` error. In that case, open `.ddev/config.yaml` and change the `PHP_VERSION` to a supported version; then run `ddev restart` and `ddev poser` again.  Note that the project PHP version is set in `.ddev/config.yaml`, while the core version to use is set in `.ddev/.env.web`.
 
 ### Changing the symlink location
 
