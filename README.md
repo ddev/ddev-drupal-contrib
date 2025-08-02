@@ -16,7 +16,7 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
 4. Configure DDEV for Drupal using `ddev config --project-type=drupal --docroot=web --php-version=8.3 --corepack-enable --project-name=[module]` or select these options when prompted using `ddev config`
    - Remove underscores in the project name, or replace with hyphens. (DDEV will do this for you.)
    - See [Changing the Drupal core version](#changing-the-drupal-core-version) to update your  version of Drupal core.
-5. Run `ddev add-on get ddev/ddev-selenium-standalone-chrome && ddev add-on get ddev/ddev-drupal-contrib`
+5. Run `ddev add-on get ddev/ddev-drupal-contrib`
 6. Run `ddev start`
 7. Run `ddev poser`
 8. Run `ddev symlink-project`
@@ -28,7 +28,6 @@ After installation, make sure to commit the `.ddev` directory to version control
 ## Update
 
 ```bash
-ddev add-on get ddev/ddev-selenium-standalone-chrome
 ddev add-on get ddev/ddev-drupal-contrib
 ddev restart
 ```
@@ -58,7 +57,7 @@ This project provides the following DDEV container commands.
 
 ## Misc
 
-- The [ddev-selenium-standalone-chrome add-on helps run FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome). This add-on already depends on that one so you likely have it installed.
+- Optional. The [ddev-selenium-standalone-chrome add-on helps run FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
 - Optional: [Install the ddev-mkdocs extension for local preview of your docs site](https://github.com/nireneko/ddev-mkdocs). Drupal.org's Gitlab CI can [automatically publish your site](https://project.pages.drupalcode.org/gitlab_templates/jobs/pages/).
 - Optional. Commit the changes in the `.ddev` folder after this plugin installs. This saves other users from having to install this integration.
 - If you add/remove a root file or directory, re-symlink root files via EITHER of these methods
