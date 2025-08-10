@@ -14,6 +14,8 @@ export _WEB_ROOT=$DDEV_DOCROOT
 cd "$DDEV_COMPOSER_ROOT" || exit
 curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/symlink_project.php
 
+# Suppress a warning.
+export PROJECT_FILES=$(ls -A)
 # Symlink name using underscores.
 # @see https://www.drupal.org/docs/develop/creating-modules/naming-and-placing-your-drupal-module
 php symlink_project.php "${DDEV_SITENAME//-/_}"
