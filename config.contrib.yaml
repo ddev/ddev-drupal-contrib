@@ -10,6 +10,10 @@ web_environment:
   # To change the location of your project code, see the README:
   # https://github.com/ddev/ddev-drupal-contrib/blob/main/README.md#changing-the-symlink-location
   - DRUPAL_PROJECTS_PATH=modules/custom
+  - SIMPLETEST_DB=mysql://db:db@db/db
+  - SIMPLETEST_BASE_URL=http://web
+  - BROWSERTEST_OUTPUT_DIRECTORY=/tmp
+  - BROWSERTEST_OUTPUT_BASE_URL=${DDEV_PRIMARY_URL}
 hooks:
   post-start:
     - exec-host: |
