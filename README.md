@@ -13,17 +13,13 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
 1. If you haven't already, [install Docker and DDEV](https://ddev.readthedocs.io/en/latest/users/install/)
 2. `git clone` your contrib module
 3. cd [contrib module directory]
-4. Configure DDEV for Drupal using `ddev config --project-type=drupal --docroot=web --php-version=8.3 --corepack-enable --project-name=[module]` or select these options when prompted using `ddev config`
-   - Remove underscores in the project name, or replace with hyphens. (DDEV will do this for you.)
-   - See [Changing the Drupal core version](#changing-the-drupal-core-version) to update your  version of Drupal core.
+4. Configure DDEV for Drupal using `ddev config --project-type=drupal --docroot=web --php-version=8.3 --corepack-enable` or select these options when prompted using `ddev config`
 5. Run `ddev add-on get ddev/ddev-drupal-contrib`
 6. Run `ddev start`
 7. Run `ddev poser`
 8. Run `ddev symlink-project`
 9. `ddev config --update` to detect expected Drupal and PHP versions.
 10. `ddev restart`
-
-After installation, make sure to commit the `.ddev` directory to version control.
 
 ## Update
 
@@ -48,7 +44,7 @@ This project provides the following DDEV container commands.
 - `ddev phpstan`. Run [phpstan](https://phpstan.org) on project files.
 - `ddev eslint` Run [ESLint](https://github.com/eslint/eslint) on JavaScript files.
 - `ddev stylelint` Run [Stylelint](https://github.com/stylelint/stylelint) on CSS files.
-- `ddev core-version`. Update your codebase to newer or older version of Drupal core. [More info](#changing-the-drupal-core-version).
+- `ddev core-version`. Update your codebase to a newer or older version of Drupal core. [More info](#changing-the-drupal-core-version).
 
 ## Codebase layout
 
@@ -103,7 +99,7 @@ Then run `ddev restart` to update the symlink location.
 
 To use with Drupal themes, set `DRUPAL_PROJECTS_PATH=themes/custom` in your config.local.yaml.
 
-## Example of successful test
+## Example of a successful test
 
 This is what a successful test looks like, based on [Config Enforce Devel](https://www.drupal.org/project/config_enforce_devel).
 
