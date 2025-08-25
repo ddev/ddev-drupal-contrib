@@ -121,6 +121,12 @@ Time: 00:13.453, Memory: 4.00 MB
 OK (3 tests, 20 assertions)
 ```
 
+To run a single test, make sure to use the path relative to the `web` directory. For example:
+
+```
+ddev phpunit web/modules/contrib/mymodule/tests/src/Unit/MyTest.php --filter testMyFunction
+```
+
 ## Automatically correct coding standard violations
 
 You can set up a pre-commit hook that runs phpcbf:
