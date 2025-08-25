@@ -6,6 +6,7 @@
 ## Usage: phpunit [flags] [args]
 ## Example: "ddev phpunit" or "ddev phpunit --stop-on-failure"
 ## Example: "ddev phpunit web/modules/custom/mymodule/tests/src/Unit/MyTest.php --filter testMyFunction"
+## Example: "ddev phpunit --filter testMyFunction"
 ## ExecRaw: true
 
 set -eu -o pipefail

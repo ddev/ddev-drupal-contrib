@@ -121,10 +121,11 @@ Time: 00:13.453, Memory: 4.00 MB
 OK (3 tests, 20 assertions)
 ```
 
-To run a single test, make sure to use the path relative to the `web` directory. For example:
+To run a single test class, make sure to use the path relative to the `web` directory. Or use --filter to refer to a test class or method. For example:
 
 ```
-ddev phpunit web/modules/contrib/mymodule/tests/src/Unit/MyTest.php --filter testMyFunction
+ddev phpunit --filter MyTest.php
+ddev phpunit --filter testMyFunction
 ```
 
 ## Automatically correct coding standard violations
