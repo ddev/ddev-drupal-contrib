@@ -12,7 +12,6 @@ set -eu -o pipefail
 if "$DDEV_DOCROOT/core/node_modules/.bin/stylelint" --version >/dev/null ; then
   # Configure prettier
   test -e .prettierrc.json || ln -s $DDEV_DOCROOT/core/.prettierrc.json .
-  test -e .prettierignore || echo '*.yml' > .prettierignore
   # Change directory to the project root folder
   cd "$DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH/${DDEV_SITENAME//-/_}" || exit
   "$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core/node_modules/.bin/stylelint" --color --config "$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core/.stylelintrc.json" "./**/*.css" "$@"
