@@ -14,7 +14,7 @@ export _WEB_ROOT=$DDEV_DOCROOT
 cd "$DDEV_COMPOSER_ROOT" || exit
 curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/symlink_project.php
 
-if [ -z "$PROJECT_FILES" ]; then
+if [ -z $PROJECT_FILES ]; then
   # Suppress a warning.
   PROJECT_FILES=$(ls -A --ignore="web" --ignore="vendor" --ignore="symlink_project.php" --ignore=".ddev" --ignore=".idea")
   export PROJECT_FILES
