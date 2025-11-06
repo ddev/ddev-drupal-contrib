@@ -13,12 +13,15 @@ export _WEB_ROOT=$DDEV_DOCROOT
 cd "$DDEV_COMPOSER_ROOT" || exit
 curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/symlink_project.php
 
-# Suppress a warning.
-PROJECT_FILES=$(ls -A --ignore="web" --ignore="vendor" --ignore="symlink_project.php" --ignore=".ddev" --ignore=".idea")
-export PROJECT_FILES
-# Used by the symlink-project script in gitlab_templates
+if [ -n "${PROJECT_FILES-}" ]; then
+  # Suppress a warning.
+  PROJECT_FILES=$(ls -A --ignore="web" --ignore="vendor" --ignore="symlink_project.php" --ignore=".ddev" --ignore=".idea")
+  export PROJECT_FILES
+fi
+
 # Symlink name using underscores.
 # @see https://www.drupal.org/docs/develop/creating-modules/naming-and-placing-your-drupal-module
+# DRUPAL_PROJECT_FOLDER is used by the symlink-project script in gitlab_templates
 export DRUPAL_PROJECT_FOLDER=${DDEV_DOCROOT}/${DRUPAL_PROJECTS_PATH}/${DDEV_SITENAME//-/_}
 php symlink_project.php
 rm -f symlink_project.php
