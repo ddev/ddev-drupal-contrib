@@ -19,5 +19,7 @@ PROJECT_FILES=$(ls -A --ignore="web" --ignore="vendor" --ignore="symlink_project
 export PROJECT_FILES
 # Symlink name using underscores.
 # @see https://www.drupal.org/docs/develop/creating-modules/naming-and-placing-your-drupal-module
-php symlink_project.php "${DDEV_SITENAME//-/_}"
+CI_PROJECT_NAME="${DDEV_SITENAME//-/_}"
+export CI_PROJECT_NAME
+php symlink_project.php
 rm -f symlink_project.php
