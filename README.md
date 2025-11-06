@@ -13,13 +13,19 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
 1. If you haven't already, [install Docker and DDEV](https://ddev.readthedocs.io/en/latest/users/install/)
 2. `git clone` your contrib module
 3. cd [contrib module directory]
-4. Configure DDEV for Drupal using `ddev config --project-type=drupal --docroot=web --php-version=8.3 --corepack-enable` or select these options when prompted using `ddev config`
-5. Run `ddev add-on get ddev/ddev-drupal-contrib`
-6. Run `ddev start`
-7. Run `ddev poser`
-8. Run `ddev symlink-project`
-9. `ddev config --update` to detect expected Drupal and PHP versions.
-10. `ddev restart`
+4. Execute the commands below, adjust as needed.
+
+```sh
+# Configure DDEV for Drupal, or use interactive mode.
+ddev config --project-type=drupal --docroot=web --php-version=8.3 --corepack-enable
+ddev add-on get ddev/ddev-drupal-contrib
+ddev start
+ddev poser
+ddev symlink-project
+# Detect expected Drupal and PHP versions.
+ddev config --update
+ddev restart
+```
 
 ## Update
 
