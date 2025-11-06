@@ -55,7 +55,7 @@ This project provides the following DDEV container commands.
 
 - Optional. The [ddev-selenium-standalone-chrome add-on helps run FunctionalJavascript and Nightwatch tests](https://github.com/ddev/ddev-selenium-standalone-chrome).
 - Optional: [Install the ddev-mkdocs extension for local preview of your docs site](https://github.com/nireneko/ddev-mkdocs). Drupal.org's Gitlab CI can [automatically publish your site](https://project.pages.drupalcode.org/gitlab_templates/jobs/pages/).
-- Optional. Commit the changes in the `.ddev` folder after this plugin installs. This saves other users from having to install this integration.
+- Optional. Commit the changes in the `.ddev` folder after this add-on installs. This saves other users from having to install this integration.
 - To install javascript dependencies, run `ddev exec "cd web/core && yarn install"`
 - If you add/remove a root file or directory, re-symlink root files via EITHER of these methods
   - `ddev restart`
