@@ -19,5 +19,5 @@ PROJECT_FILES=$(ls -A --ignore="web" --ignore="vendor" --ignore="symlink_project
 export PROJECT_FILES
 # Symlink name using underscores.
 # @see https://www.drupal.org/docs/develop/creating-modules/naming-and-placing-your-drupal-module
-php symlink_project.php "${DDEV_SITENAME//-/_}"
+php symlink_project.php # Can't pass "${DDEV_SITENAME//-/_}". See https://git.drupalcode.org/project/gitlab_templates/-/commit/2104d0694f458b828eea17f19a61b01237ed036e#93b9451b4e41b866a8bb48db2de27c0b67f57aed
 rm -f symlink_project.php
