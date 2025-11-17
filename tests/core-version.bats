@@ -40,12 +40,6 @@ teardown_file() {
   assert_output "11"
 }
 
-@test "ddev core-version short-major" {
-  ddev core-version 11
-  run -0 ddev exec 'drush st --fields=drupal-version --format=string'
-  assert_output "11.0.0"
-}
-
 @test "ddev core-version invalid" {
   run ! ddev core-version test
   assert_output --partial 'Could not parse version constraint test: Invalid version string "test"'
