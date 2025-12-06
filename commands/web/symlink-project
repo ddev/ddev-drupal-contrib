@@ -13,9 +13,24 @@ export _WEB_ROOT=$DDEV_DOCROOT
 cd "$DDEV_COMPOSER_ROOT" || exit
 curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/symlink_project.php
 
+# Suppress a warning from symlink_project.php about the list of project files
+# and folders being derived, because the environment variable PROJECT_FILES is
+# empty.
 if [ -z "${PROJECT_FILES-}" ]; then
-  # Suppress a warning.
-  PROJECT_FILES=$(ls -A --ignore="web" --ignore="vendor" --ignore="symlink_project.php" --ignore=".ddev" --ignore=".idea")
+  # Build the list of files to symlink by filtering out those excluded via
+  # .gitattributes export-ignore and a few common, hardcoded values.
+  FILTERED_PROJECT_FILES=()
+  for f in * .*; do
+    [[ "$f" == .* ]] && continue
+    case "$f" in
+      web|docroot|vendor|symlink_project.php|.ddev|.idea) continue ;;
+    esac
+    if git check-attr export-ignore "$f" 2>/dev/null | grep -q 'export-ignore: set'; then
+      continue
+    fi
+    FILTERED_PROJECT_FILES+=("$f")
+  done
+  PROJECT_FILES="$(printf '%s\n' "${FILTERED_PROJECT_FILES[@]}")"
   export PROJECT_FILES
 fi
 
