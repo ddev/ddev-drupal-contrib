@@ -17,14 +17,13 @@ DDEV integration for developing Drupal contrib projects. As a general philosophy
 
 ```sh
 # Configure DDEV for Drupal, or use interactive mode.
-ddev config --project-type=drupal --docroot=web --php-version=8.3 --corepack-enable
+ddev config --project-type=drupal11 --docroot=web
 ddev add-on get ddev/ddev-drupal-contrib
 ddev start
 ddev poser
 ddev symlink-project
 # Detect expected Drupal and PHP versions.
 ddev config --update
-ddev restart
 ```
 
 ## Update
