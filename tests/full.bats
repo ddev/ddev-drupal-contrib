@@ -30,6 +30,16 @@ teardown_file() {
   ls -la web/modules/custom/test_drupal_contrib/test_drupal_contrib.info.yml
 }
 
+@test "ddev symlink-project updates gitignore" {
+  touch .gitignore
+  run -0 ddev symlink-project
+  run -0 ddev symlink-project
+  run -0 grep -Fx "/vendor/" .gitignore
+  run -0 grep -Fx "/web/" .gitignore
+  run -0 sh -c '[ "$(grep -c -Fx "/vendor/" .gitignore)" -eq 1 ]'
+  run -0 sh -c '[ "$(grep -c -Fx "/web/" .gitignore)" -eq 1 ]'
+}
+
 @test "php tools availability" {
   ddev phpcs --version
   ddev phpstan --version
