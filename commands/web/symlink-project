@@ -15,7 +15,7 @@ curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/s
 
 if [ -z "${PROJECT_FILES-}" ]; then
   # Suppress a warning.
-  PROJECT_FILES=$(ls -A --ignore="web" --ignore="vendor" --ignore="symlink_project.php" --ignore=".ddev" --ignore=".idea")
+  PROJECT_FILES=$(ls -A --ignore="web" --ignore="vendor" --ignore="symlink_project.php" --ignore=".ddev" --ignore=".idea" --ignore=".claude")
   export PROJECT_FILES
 fi
 
