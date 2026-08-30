@@ -24,6 +24,13 @@ teardown_file() {
   _common_test_poser
 }
 
+@test "ddev poser accepts update-only flags such as --prefer-lowest" {
+  # --dry-run keeps this cheap: it proves composer resolves with the
+  # update-only flags (composer install would reject them) without
+  # downloading a second dependency set.
+  ddev poser --prefer-lowest --prefer-stable --dry-run
+}
+
 @test "ddev symlink-project" {
   ddev symlink-project
   ddev mutagen sync
