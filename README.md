@@ -39,7 +39,7 @@ This project provides the following DDEV container commands.
 
 - [ddev poser](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/poser).
   - Creates a temporary [composer.contrib.json](https://getcomposer.org/doc/03-cli.md#composer) so that `drupal/core-recommended` becomes a dev dependency. This way the composer.json from the module is untouched.
-  - Runs `composer update` so that dependencies are available. Additional arguments to `ddev poser` like `--prefer-source` are passed along to `composer update`. Lowest-dependency testing works too: `ddev poser --prefer-lowest --prefer-stable` (pair it with a core floor, e.g. `ddev dotenv set .ddev/.env.web --drupal-core '~10.3.0'`).
+  - Runs `composer update` so that dependencies are available. Additional arguments to `ddev poser` like `--prefer-source` are passed along to `composer update`. Lowest-dependency testing works too: `ddev poser --prefer-lowest --prefer-stable` (pair it with a core floor, e.g. `ddev core-version '~10.3.0'` first).
   - Note: it is perfectly acceptable to skip this command and edit the require-dev of composer.json by hand.
 - [ddev symlink-project](https://github.com/ddev/ddev-drupal-contrib/blob/main/commands/web/symlink-project). Symlinks your project files into the configured location (defaults to `web/modules/custom`) so Drupal can find your module. This command runs automatically on every `ddev start` _as long as Composer has generated `vendor/autoload.php`_ which occurs during `composer install/update`. See codebase image below.
 - `ddev phpunit` Run [PHPUnit](https://github.com/sebastianbergmann/phpunit) tests.

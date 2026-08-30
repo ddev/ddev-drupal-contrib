@@ -12,11 +12,6 @@ set -eu -o pipefail
 
 export COMPOSER=composer.contrib.json
 .ddev/commands/web/expand-composer-json
-# `update`, not `install`: composer.contrib.lock is removed below, so install
-# always fell back to a full update anyway ("No lock file found. Updating
-# dependencies instead of installing from lock file"). Invoking update directly
-# is behavior-identical and additionally accepts update-only flags such as
-# --prefer-lowest, enabling lowest-dependency testing.
 composer update "$@"
 # The -f flag suppresses errors if lock file does not exist.
 rm -f composer.contrib.json composer.contrib.lock
