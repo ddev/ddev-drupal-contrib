@@ -26,10 +26,7 @@ export DRUPAL_PROJECT_FOLDER=${DDEV_DOCROOT}/${DRUPAL_PROJECTS_PATH}/${DDEV_SITE
 php symlink_project.php
 rm -f symlink_project.php
 
-# Ensure generated Drupal scaffold paths are ignored in contrib repositories.
-touch .gitignore
-for pattern in "/vendor/" "/web/"; do
-  if ! grep -Fxq "$pattern" .gitignore; then
-    printf "%s\n" "$pattern" >> .gitignore
-  fi
-done
+# Ignore generated Drupal paths, unless the project already manages its own .gitignore.
+if [ ! -e .gitignore ]; then
+  printf "/vendor/\n/web/\n" > .gitignore
+fi
