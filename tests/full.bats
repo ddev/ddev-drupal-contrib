@@ -30,6 +30,22 @@ teardown_file() {
   ls -la web/modules/custom/test_drupal_contrib/test_drupal_contrib.info.yml
 }
 
+@test "ddev symlink-project creates gitignore only when missing" {
+  rm -f .gitignore
+  ddev mutagen sync
+  run -0 ddev symlink-project
+  ddev mutagen sync
+  run -0 grep -Fx "/vendor/" .gitignore
+  run -0 grep -Fx "/web/" .gitignore
+
+  echo "/custom/" > .gitignore
+  ddev mutagen sync
+  run -0 ddev symlink-project
+  ddev mutagen sync
+  run -0 cat .gitignore
+  assert_output "/custom/"
+}
+
 @test "php tools availability" {
   ddev phpcs --version
   ddev phpstan --version
