@@ -26,6 +26,17 @@ ddev symlink-project
 ddev config --update
 ```
 
+### Installing with Drupal CMS
+If you want to work with a specific Drupal CMS site template ((Byte)[https://drupal.org/project/byte], for example), add it to your dev dependencies, along with Drush:
+```shell
+composer require --dev --no-update drupal/byte drush/drush
+```
+Then, when your codebase is set up, use Drush to set up Drupal with Byte:
+```shell
+ddev drush site:install ../recipes/byte
+```
+The end result will be exactly as if you started a project with Drupal CMS and chose Byte during installation.
+
 ## Update
 
 ```bash
