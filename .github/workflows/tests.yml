@@ -1,17 +1,21 @@
 name: tests
 on:
   pull_request:
+    paths-ignore:
+      - "**.md"
   push:
     branches: [ main ]
+    paths-ignore:
+      - "**.md"
 
   schedule:
-  - cron: '25 08 * * *'
+    - cron: '25 08 * * *'
 
   workflow_dispatch:
     inputs:
       debug_enabled:
         type: boolean
-        description: Debug with tmate
+        description: Enable remote debugging session
         required: false
         default: false
 
@@ -19,19 +23,19 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-# This is required for "gautamkrishnar/keepalive-workflow", see "ddev/github-action-add-on-test"
 permissions:
-  actions: write
+  contents: read
 
 jobs:
   tests:
     strategy:
       matrix:
+        os: [ubuntu-latest, ubuntu-26.04-arm]
         ddev_version: [stable, HEAD]
         drupal_version: ["default", "10", "11"]
       fail-fast: false
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v4

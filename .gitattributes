@@ -1,0 +1,7 @@
+# Exclude files from releases/tarballs
+tests/ export-ignore
+.github/ export-ignore
+assets/ export-ignore
+.gitattributes export-ignore
+.editorconfig export-ignore
+.gitmodules export-ignore
