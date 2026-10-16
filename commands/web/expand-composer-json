@@ -15,7 +15,7 @@ export DRUPAL_CORE=${DRUPAL_CORE:-^11}
 
 export _WEB_ROOT=$DDEV_DOCROOT
 cd "$DDEV_COMPOSER_ROOT" || exit
-curl -OL https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/expand_composer_json.php
+curl -fsSL -O https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/scripts/expand_composer_json.php
 _ddev_drupal_contrib_empty_composer=false
 if [[ ! -f composer.json ]]; then
   echo "{}" > composer.json
