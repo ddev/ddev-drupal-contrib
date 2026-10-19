@@ -52,6 +52,17 @@ teardown_file() {
   ddev phpunit --version
 }
 
+@test "phpstan uses the project root configuration" {
+  # Simulate the broken relative link created by earlier versions.
+  ddev exec ln -sfn web/phpstan.neon web/modules/custom/test_drupal_contrib/phpstan.neon
+  run ddev phpstan --no-progress
+  assert_output --partial "Using configuration file"
+  run -0 ddev exec readlink web/modules/custom/test_drupal_contrib/phpstan.neon
+  assert_output "/var/www/html/phpstan.neon"
+  run -0 ddev exec readlink web/modules/custom/test_drupal_contrib/phpstan-baseline.neon
+  assert_output "/var/www/html/phpstan-baseline.neon"
+}
+
 @test "drupal core version" {
   run -0 ddev exec 'drush st --fields=drupal-version --format=string | cut -d. -f1'
   # Default core version is ^11.
