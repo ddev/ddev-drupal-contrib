@@ -15,7 +15,7 @@ curl -fsSL -O https://git.drupalcode.org/project/gitlab_templates/-/raw/default-
 
 if [ -z "${PROJECT_FILES-}" ]; then
   # Suppress a warning.
-  PROJECT_FILES=$(ls -A --ignore="web" --ignore="vendor" --ignore="symlink_project.php" --ignore=".ddev" --ignore=".idea" --ignore=".claude")
+  PROJECT_FILES=$(ls -A --ignore="$DDEV_DOCROOT" --ignore="vendor" --ignore="symlink_project.php" --ignore=".ddev" --ignore=".idea" --ignore=".claude")
   export PROJECT_FILES
 fi
 
@@ -28,5 +28,5 @@ rm -f symlink_project.php
 
 # Ignore generated Drupal paths, unless the project already manages its own .gitignore.
 if [ ! -e .gitignore ]; then
-  printf "/vendor/\n/web/\n" > .gitignore
+  printf "/vendor/\n/$DDEV_DOCROOT/\n" > .gitignore
 fi
