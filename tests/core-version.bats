@@ -28,6 +28,13 @@ teardown_file() {
   assert_output "11"
 }
 
+@test "ddev core-version ^12" {
+  ddev config --php-version=8.5
+  ddev core-version ^12
+  run -0 ddev exec 'drush st --fields=drupal-version --format=string | cut -d. -f1'
+  assert_output "12"
+}
+
 @test "ddev core-version default" {
   ddev core-version default
   run -0 ddev exec 'drush st --fields=drupal-version --format=string | cut -d. -f1'
