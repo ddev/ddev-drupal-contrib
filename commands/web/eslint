@@ -15,7 +15,13 @@ if "$DDEV_DOCROOT/core/node_modules/.bin/eslint" --version >/dev/null ; then
   test -e .prettierignore || echo '*.yml' > .prettierignore
   # Change directory to the project root folder
   cd "$DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH/${DDEV_SITENAME//-/_}" || exit
-  "$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core/node_modules/.bin/eslint" --config="../../../core/.eslintrc.passing.json" --no-error-on-unmatched-pattern --ignore-pattern="*.es6.js" --resolve-plugins-relative-to=$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core --ext=.js,.yml . "$@"
+  if test -e $DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core/.eslintrc.passing.json ; then
+    # Use eslint v8 config with Drupal 11 or earlier.
+    "$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core/node_modules/.bin/eslint" --config="../../../core/.eslintrc.passing.json" --no-error-on-unmatched-pattern --ignore-pattern="*.es6.js" --resolve-plugins-relative-to=$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core --ext=.js,.yml . "$@"
+  else
+    # Use eslint flat config with Drupal 12 or later.
+    "$DDEV_COMPOSER_ROOT/$DDEV_DOCROOT/core/node_modules/.bin/eslint" --config="../../../core/eslint.passing.config.mjs" --no-error-on-unmatched-pattern --ignore-pattern="*.es6.js" --ext=.js,.yml . "$@"
+  fi
 else
   echo "eslint is not available. You may need to 'ddev exec \"cd $DDEV_DOCROOT/core && yarn install\"'"
   exit 1
