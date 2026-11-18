@@ -17,15 +17,21 @@ if ! command -v phpunit >/dev/null; then
 fi
 
 # CHECK for local config.
-if [ -f "phpunit.xml" ]; then
+if [ -f "phpunit.xml" ] || [ -f "phpunit.xml.dist" ]; then
   # Defer to local config
   phpunit "$@"
 else
-  # Check if we are running a specific test or test folder.
-  if [ $# -gt 0 ] && [ -e "$1" ]; then
-    TEST_PATH="$1"
-    shift
-    phpunit --bootstrap $PWD/$DDEV_DOCROOT/core/tests/bootstrap.php "$TEST_PATH" "$@"
+  # Check if we are running a specific test or test folder. The path can be in
+  # any position, for example after an option such as "-c <file>".
+  TEST_PATH_GIVEN=false
+  for ARG in "$@"; do
+    if [ -d "$ARG" ] || { [ -f "$ARG" ] && [[ "$ARG" == *.php || "$ARG" == *.phpt ]]; }; then
+      TEST_PATH_GIVEN=true
+      break
+    fi
+  done
+  if [ "$TEST_PATH_GIVEN" = true ]; then
+    phpunit --bootstrap $PWD/$DDEV_DOCROOT/core/tests/bootstrap.php "$@"
   else
     # Run all custom module tests.
     phpunit --bootstrap $PWD/$DDEV_DOCROOT/core/tests/bootstrap.php $DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH "$@"
