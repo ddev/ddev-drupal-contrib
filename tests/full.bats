@@ -52,6 +52,11 @@ teardown_file() {
   ddev phpunit --version
 }
 
+@test "ddev phpunit runs a test path given after an option once" {
+  run -0 ddev phpunit -c web/core/phpunit.xml.dist tests/src
+  assert_output --partial "OK (1 test, 1 assertion)"
+}
+
 @test "drupal core version" {
   run -0 ddev exec 'drush st --fields=drupal-version --format=string | cut -d. -f1'
   # Default core version is ^11.
