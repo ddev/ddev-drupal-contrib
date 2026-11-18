@@ -11,7 +11,13 @@ _common_setup() {
   ddev delete -Oy ${PROJNAME} >/dev/null 2>&1 || true
   cp -R ${DIR}/tests/testdata/test_drupal_contrib/* ${TESTDIR}
   cd ${TESTDIR}
-  ddev config --project-name=${PROJNAME} --project-type=drupal --docroot=web --php-version=8.3 --corepack-enable --web-environment-add=COMPOSER_NO_SECURITY_BLOCKING=1
+  if [ "$TEST_DRUPAL_CORE" = "12" ]; then
+    # Test Drupal 12 with newer PHP version, corepack-disabled and newer Yarn
+    ddev config --project-name=${PROJNAME} --project-type=drupal --docroot=web --php-version=8.5 --corepack-enable --web-environment-add=COMPOSER_NO_SECURITY_BLOCKING=1
+    ddev yarn set version stable
+  else
+    ddev config --project-name=${PROJNAME} --project-type=drupal --docroot=web --php-version=8.3 --corepack-enable --web-environment-add=COMPOSER_NO_SECURITY_BLOCKING=1
+  fi
   if [ -n "$TEST_DRUPAL_CORE" ] && [ "$TEST_DRUPAL_CORE" != "default" ]; then
     ddev dotenv set .ddev/.env.web --drupal-core "^${TEST_DRUPAL_CORE}"
   fi
