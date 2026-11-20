@@ -23,9 +23,14 @@ if [ -e phpstan.neon ] || { [ ! -e phpstan.neon.dist ] && [ ! -e phpstan.dist.ne
   test -e phpstan-baseline.neon || touch phpstan-baseline.neon
 fi
 
+PROJECT_ROOT=$PWD
 EXTENSION_DIRECTORY=$DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH/${DDEV_SITENAME//-/_}
 cd "$EXTENSION_DIRECTORY" || exit 1
-# Ensure PHPStan configuration is symlinked from project root.
-ln -s $DDEV_DOCROOT/phpstan.neon 2>/dev/null || true
-ln -s $DDEV_DOCROOT/phpstan-baseline.neon 2>/dev/null || true
+# Ensure PHPStan configuration is symlinked from project root. Use absolute
+# targets, and replace stale links, but never overwrite a real file.
+for file in phpstan.neon phpstan-baseline.neon; do
+  if [ -L "$file" ] || [ ! -e "$file" ]; then
+    ln -sfn "$PROJECT_ROOT/$file" "$file"
+  fi
+done
 phpstan analyze . "$@"
