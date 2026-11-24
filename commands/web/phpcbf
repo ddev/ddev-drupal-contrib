@@ -5,6 +5,7 @@
 ## Description: Run phpcbf inside the web container
 ## Usage: phpcbf [flags] [args]
 ## Example: "ddev phpcbf" or "ddev phpcbf -n"
+## Example: "ddev phpcbf src/Form/MyForm.php"
 ## ExecRaw: true
 
 set -eu -o pipefail
@@ -14,4 +15,12 @@ if ! command -v phpcbf >/dev/null; then
   exit 1
 fi
 test -e phpcs.xml.dist || curl -fsSL -O https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/assets/phpcs.xml.dist
-phpcbf -s --report-full --report-summary --report-source $DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH --ignore=*/.ddev/* "$@"
+# Fix the whole project unless a path to fix is given.
+SCAN_PATH=$DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH
+for arg in "$@"; do
+  if [[ $arg != -* && -e $arg ]]; then
+    SCAN_PATH=
+    break
+  fi
+done
+phpcbf -s --report-full --report-summary --report-source ${SCAN_PATH:+"$SCAN_PATH"} --ignore=*/.ddev/* "$@"
