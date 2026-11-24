@@ -5,6 +5,7 @@
 ## Description: Run phpcs inside the web container
 ## Usage: phpcs [flags] [args]
 ## Example: "ddev phpcs" or "ddev phpcs -n"
+## Example: "ddev phpcs src/Form/MyForm.php"
 ## ExecRaw: true
 
 set -eu -o pipefail
@@ -14,4 +15,12 @@ if ! command -v phpcs >/dev/null; then
   exit 1
 fi
 test -e phpcs.xml.dist || curl -fsSL -O https://git.drupalcode.org/project/gitlab_templates/-/raw/default-ref/assets/phpcs.xml.dist
-phpcs -s --report-full --report-summary --report-source $DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH --ignore=*/.ddev/* "$@"
+# Scan the whole project unless a path to scan is given.
+SCAN_PATH=$DDEV_DOCROOT/$DRUPAL_PROJECTS_PATH
+for arg in "$@"; do
+  if [[ $arg != -* && -e $arg ]]; then
+    SCAN_PATH=
+    break
+  fi
+done
+phpcs -s --report-full --report-summary --report-source ${SCAN_PATH:+"$SCAN_PATH"} --ignore=*/.ddev/* "$@"
